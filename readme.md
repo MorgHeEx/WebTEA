@@ -1,4 +1,4 @@
-# WebTEA
+# 🌱 WebTEA
 
 Plataforma web de orientação e acolhimento para pessoas recém-diagnosticadas com Transtorno do Espectro Autista (TEA) e seus familiares, com foco no estado do Amapá.
 
@@ -27,9 +27,53 @@ O design prioriza acessibilidade cognitiva: tipografia legível, cores suaves, s
 
 ## Tecnologias
 
-- [React](https://react.dev/)
+- [React 18](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
 - [Tailwind CSS](https://tailwindcss.com/)
-- `localStorage` para persistência de progresso e dados do usuário
+- [PostCSS](https://postcss.org/)
+- `localStorage` para persistência de dados do usuário
+- [gh-pages](https://github.com/tschaub/gh-pages) para deploy automático
+
+---
+
+## Como rodar localmente
+
+```bash
+# Clone o repositório
+git clone https://github.com/seu-usuario/webtea.git
+
+# Acesse a pasta
+cd webtea
+
+# Instale as dependências
+npm install
+
+# Inicie o servidor de desenvolvimento
+npm run dev
+```
+
+Acesse em `http://localhost:5173` (ou a porta indicada pelo Vite).
+
+---
+
+## Equipe
+
+Projeto desenvolvido por:
+
+- Jamilly Maria
+- Luã Otávio
+- Miguel Lucas
+
+---
+
+## Contato
+
+Dúvidas, sugestões ou solicitações de remoção de conteúdo:
+
+- jamilly@email.com
+- lua@email.com
+- miguel@email.com
 
 ---
 
