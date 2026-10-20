@@ -71,9 +71,9 @@ Projeto desenvolvido por:
 
 Dúvidas, sugestões ou solicitações de remoção de conteúdo:
 
-- jamilly@email.com
-- lua@email.com
-- miguel@email.com
+- npx gh-pages -d dist -r https://github.com/MorgHeEx/WebTEA.git
+- luaotaviops@gmail.com
+- miguelsmoraes@hotmail.com
 
 ---
 
