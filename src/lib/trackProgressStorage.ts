@@ -69,8 +69,23 @@ export function saveProgress(track: TrackId, state: TrackProgressState): void {
 }
 
 export const SECTION_IDS = {
-  self: ["self-s1", "self-s2", "self-s3", "self-s4"] as const,
-  loved: ["loved-denial", "loved-steps", "loved-ableism", "loved-vivencias"] as const,
+  self: [
+    "self-s1",
+    "self-s2",
+    "self-atendimento",
+    "self-sus",
+    "self-terapia",
+    "self-direitos",
+    "self-carteira",
+  ] as const,
+  loved: [
+    "loved-denial",
+    "loved-support",
+    "loved-steps",
+    "loved-atendimento",
+    "loved-sus",
+    "loved-ableism",
+  ] as const,
 } as const;
 
 export function totalSections(track: TrackId): number {

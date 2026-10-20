@@ -65,7 +65,7 @@ export function CarteiraTeaAmapaSection({
   const checked = getChecklist(checklistId);
 
   return (
-    <div className="border-t border-slate-200/80 pt-8">
+    <div className="space-y-1">
       <h3 className="text-lg font-semibold text-slate-900">Como emitir sua Carteira TEA no Amapá</h3>
       <p className="mt-1 text-sm font-medium text-teal-800">Gratuito. Feito nas unidades do Super Fácil.</p>
       <p className="mt-2 text-xs text-slate-500">Fluxo conforme portal oficial · última atualização: 14/05/2024</p>

@@ -3,8 +3,37 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --base-font-size: 16px;
+    --line-height: 1.6;
+    --font-family: "Nunito", system-ui, sans-serif;
+    --page-zoom: 1;
+    --app-bg-from: #f0f9ff;
+    --app-bg-via: #ecfdf5;
+    --app-bg-to: #f0f9ff;
+    --app-fg: #1e293b;
+    --app-muted: #475569;
+    --accent: #0369a1;
+    --accent-alt: #0f766e;
+  }
+
   html {
     scroll-behavior: smooth;
+    font-size: var(--base-font-size);
+    font-family: var(--font-family);
+    line-height: var(--line-height);
+  }
+
+  body {
+    @apply min-h-dvh antialiased;
+    background-color: var(--app-bg-from);
+    color: var(--app-fg);
+    font-family: var(--font-family);
+    line-height: var(--line-height);
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-sky-600;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -20,12 +49,184 @@
       transition-duration: 0.01ms !important;
     }
   }
+}
 
-  body {
-    @apply min-h-dvh bg-sky-50 text-slate-800 antialiased;
+@layer components {
+  .zoom-root {
+    transform: scale(var(--page-zoom));
+    transform-origin: top center;
+    min-height: calc(100dvh / var(--page-zoom));
   }
 
-  :focus-visible {
-    @apply outline-2 outline-offset-2 outline-sky-600;
+  .app-shell {
+    background-image: linear-gradient(
+      to bottom,
+      var(--app-bg-from),
+      color-mix(in srgb, var(--app-bg-via) 35%, transparent),
+      var(--app-bg-to)
+    );
+  }
+
+  /* Temas */
+  html[data-theme="dark"] {
+    --app-bg-from: #1e293b;
+    --app-bg-via: #1e293b;
+    --app-bg-to: #0f172a;
+    --app-fg: #e2e8f0;
+    --app-muted: #cbd5e1;
+    --accent: #7dd3fc;
+    --accent-alt: #5eead4;
+    color-scheme: dark;
+  }
+
+  html[data-theme="dark"] body,
+  html[data-theme="dark"] .app-shell {
+    background-color: #1e293b;
+    color: #e2e8f0;
+  }
+
+  html[data-theme="dark"] .bg-white\/90,
+  html[data-theme="dark"] .bg-white\/80,
+  html[data-theme="dark"] .bg-white\/95,
+  html[data-theme="dark"] .bg-white,
+  html[data-theme="dark"] .settings-panel,
+  html[data-theme="dark"] .settings-trigger,
+  html[data-theme="dark"] .toc-panel {
+    background-color: #334155 !important;
+    color: #e2e8f0;
+    border-color: #475569 !important;
+  }
+
+  html[data-theme="dark"] .text-slate-900,
+  html[data-theme="dark"] .text-slate-800,
+  html[data-theme="dark"] .text-slate-700 {
+    color: #e2e8f0 !important;
+  }
+
+  html[data-theme="dark"] .text-slate-600,
+  html[data-theme="dark"] .text-slate-500 {
+    color: #cbd5e1 !important;
+  }
+
+  html[data-theme="light"] {
+    --app-bg-from: #ffffff;
+    --app-bg-via: #ffffff;
+    --app-bg-to: #ffffff;
+    --app-fg: #0f172a;
+    --app-muted: #334155;
+  }
+
+  html[data-theme="light"] .app-shell {
+    background-image: none;
+    background-color: #ffffff;
+  }
+
+  html[data-theme="contrast"] {
+    --app-bg-from: #000000;
+    --app-bg-via: #000000;
+    --app-bg-to: #000000;
+    --app-fg: #ffffff;
+    --app-muted: #ffffff;
+    --accent: #ffff00;
+    --accent-alt: #ffff00;
+    color-scheme: dark;
+  }
+
+  html[data-theme="contrast"] body,
+  html[data-theme="contrast"] .app-shell {
+    background-color: #000000 !important;
+    background-image: none !important;
+    color: #ffffff !important;
+  }
+
+  html[data-theme="contrast"] .bg-white\/90,
+  html[data-theme="contrast"] .bg-white\/80,
+  html[data-theme="contrast"] .bg-white\/95,
+  html[data-theme="contrast"] .bg-white,
+  html[data-theme="contrast"] .settings-panel,
+  html[data-theme="contrast"] .settings-trigger,
+  html[data-theme="contrast"] .toc-panel,
+  html[data-theme="contrast"] [class*="bg-sky"],
+  html[data-theme="contrast"] [class*="bg-emerald"],
+  html[data-theme="contrast"] [class*="bg-teal"],
+  html[data-theme="contrast"] [class*="bg-rose"],
+  html[data-theme="contrast"] [class*="bg-amber"] {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+  }
+
+  html[data-theme="contrast"] .text-slate-900,
+  html[data-theme="contrast"] .text-slate-800,
+  html[data-theme="contrast"] .text-slate-700,
+  html[data-theme="contrast"] .text-slate-600,
+  html[data-theme="contrast"] .text-slate-500,
+  html[data-theme="contrast"] [class*="text-sky"],
+  html[data-theme="contrast"] [class*="text-teal"],
+  html[data-theme="contrast"] [class*="text-emerald"] {
+    color: #ffffff !important;
+  }
+
+  html[data-theme="contrast"] a {
+    color: #ffff00 !important;
+  }
+
+  html[data-theme="contrast"] .border-emerald-200\/90,
+  html[data-theme="contrast"] .ring-emerald-100 {
+    --tw-ring-color: #ffff00 !important;
+    border-color: #ffff00 !important;
+  }
+
+  /* Preferências */
+  html[data-reduce-motion="true"] *,
+  html[data-reduce-motion="true"] *::before,
+  html[data-reduce-motion="true"] *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html[data-highlight-links="true"] a {
+    text-decoration: underline !important;
+    text-underline-offset: 3px;
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+
+  html[data-extra-spacing="true"] .track-main > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 3.25rem;
+  }
+
+  html[data-focus-mode="true"] .toc-panel,
+  html[data-focus-mode="true"] footer {
+    display: none !important;
+  }
+
+  @keyframes slide-in-right {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.25s ease-out;
+  }
+}
+
+@layer utilities {
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
   }
 }

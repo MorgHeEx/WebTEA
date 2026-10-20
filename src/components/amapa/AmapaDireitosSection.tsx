@@ -51,14 +51,16 @@ type AmapaDireitosSectionProps = {
 };
 
 export function AmapaDireitosSection({
-  title = "Seus direitos no Amapá",
+  title,
   intro = "Um mapa enxuto do que costuma existir por lei — confirme detalhes com profissionais e órgãos oficiais.",
 }: AmapaDireitosSectionProps) {
   return (
     <div className="space-y-8">
       <div>
-        <h3 className="text-lg font-semibold text-slate-900">{title}</h3>
-        <p className="mt-2 max-w-prose text-sm leading-relaxed text-slate-600">{intro}</p>
+        {title ? <h3 className="text-lg font-semibold text-slate-900">{title}</h3> : null}
+        <p className={`max-w-prose text-sm leading-relaxed text-slate-600 ${title ? "mt-2" : ""}`}>
+          {intro}
+        </p>
 
         <p className="mt-4 text-sm font-semibold text-slate-800">Direitos federais aplicáveis</p>
         <ul className="mt-3 grid gap-3 sm:grid-cols-2">

@@ -1,5 +1,6 @@
 import { AmapaDireitosSection } from "../amapa/AmapaDireitosSection";
 import { CarteiraTeaAmapaSection } from "../amapa/CarteiraTeaAmapaSection";
+import { ContentSection } from "../ui/ContentSection";
 import { PhaseCard } from "../ui/PhaseCard";
 
 type Props = {
@@ -9,18 +10,17 @@ type Props = {
 
 export function TrackLovedOneResponsaveisExtra({ getChecklist, setChecklistItem }: Props) {
   return (
-    <section
-      className="rounded-2xl border-l-4 border-teal-500 bg-gradient-to-r from-teal-50/50 to-white/90 p-6 shadow-md md:p-8"
-      aria-labelledby="loved-resp-heading"
+    <ContentSection
+      id="loved-responsaveis"
+      index={7}
+      title="Orientações para responsáveis"
+      labelTone="teal"
     >
-      <p className="mb-2 inline-block rounded-full bg-teal-100 px-2.5 py-0.5 text-xs font-semibold text-teal-900">
-        Para responsáveis
+      <p className="max-w-prose text-sm leading-relaxed text-slate-600">
+        Conteúdo extra porque você indicou ser responsável pelo cuidado.
       </p>
-      <h2 id="loved-resp-heading" className="text-xl font-semibold text-slate-900 md:text-2xl">
-        Orientações para responsáveis
-      </h2>
 
-      <div className="mt-6 space-y-8">
+      <div className="space-y-8 pt-2">
         <div>
           <h3 className="text-lg font-semibold text-slate-900">1. Profissionais para buscar</h3>
           <p className="mt-2 max-w-prose text-sm leading-relaxed text-slate-700">
@@ -79,6 +79,6 @@ export function TrackLovedOneResponsaveisExtra({ getChecklist, setChecklistItem 
           </div>
         </div>
       </div>
-    </section>
+    </ContentSection>
   );
 }
