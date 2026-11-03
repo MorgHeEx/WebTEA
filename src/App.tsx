@@ -52,7 +52,7 @@ export default function App() {
   const liveMsg = useMemo(() => trackAnnouncement(track, path), [track, path]);
 
   return (
-    <div className="app-shell min-h-dvh bg-gradient-to-b from-sky-50 via-emerald-50/35 to-sky-50">
+    <div className="app-shell min-h-dvh">
       <a
         href="#conteudo-principal"
         className="absolute left-4 top-4 z-[100] -translate-y-24 rounded-lg bg-white px-4 py-2 text-sm font-medium text-slate-900 shadow-md transition-transform focus:translate-y-0 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-sky-600"

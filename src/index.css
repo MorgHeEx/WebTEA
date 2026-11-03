@@ -85,6 +85,28 @@
     color: #e2e8f0;
   }
 
+  html[data-theme="dark"] [class*="bg-sky-50"],
+  html[data-theme="dark"] [class*="bg-sky-100"],
+  html[data-theme="dark"] [class*="bg-blue-100"],
+  html[data-theme="dark"] [class*="bg-emerald-50"],
+  html[data-theme="dark"] [class*="bg-emerald-100"],
+  html[data-theme="dark"] [class*="bg-teal-50"],
+  html[data-theme="dark"] [class*="bg-teal-100"],
+  html[data-theme="dark"] [class*="bg-slate-50"],
+  html[data-theme="dark"] [class*="bg-slate-100"],
+  html[data-theme="dark"] [class*="bg-slate-200"],
+  html[data-theme="dark"] [class*="bg-rose-50"],
+  html[data-theme="dark"] [class*="bg-amber-50"] {
+    background-color: #334155 !important;
+    color: #e2e8f0 !important;
+    border-color: #475569 !important;
+  }
+
+  html[data-theme="dark"] [class*="bg-gradient-to-br"] {
+    background-image: none !important;
+    background-color: #334155 !important;
+  }
+
   html[data-theme="dark"] .bg-white\/90,
   html[data-theme="dark"] .bg-white\/80,
   html[data-theme="dark"] .bg-white\/95,
@@ -106,6 +128,15 @@
   html[data-theme="dark"] .text-slate-600,
   html[data-theme="dark"] .text-slate-500 {
     color: #cbd5e1 !important;
+  }
+
+  html[data-theme="dark"] [class*="text-sky-"],
+  html[data-theme="dark"] [class*="text-blue-"],
+  html[data-theme="dark"] [class*="text-teal-"],
+  html[data-theme="dark"] [class*="text-emerald-"],
+  html[data-theme="dark"] [class*="text-rose-"],
+  html[data-theme="dark"] [class*="text-amber-"] {
+    color: #bae6fd !important;
   }
 
   html[data-theme="light"] {
@@ -139,21 +170,15 @@
     color: #ffffff !important;
   }
 
-  html[data-theme="contrast"] .bg-white\/90,
-  html[data-theme="contrast"] .bg-white\/80,
-  html[data-theme="contrast"] .bg-white\/95,
-  html[data-theme="contrast"] .bg-white,
-  html[data-theme="contrast"] .settings-panel,
-  html[data-theme="contrast"] .settings-trigger,
-  html[data-theme="contrast"] .toc-panel,
-  html[data-theme="contrast"] [class*="bg-sky"],
-  html[data-theme="contrast"] [class*="bg-emerald"],
-  html[data-theme="contrast"] [class*="bg-teal"],
-  html[data-theme="contrast"] [class*="bg-rose"],
-  html[data-theme="contrast"] [class*="bg-amber"] {
+  html[data-theme="contrast"] [class*="bg-"] {
     background-color: #000000 !important;
+    background-image: none !important;
     color: #ffffff !important;
     border-color: #ffffff !important;
+  }
+
+  html[data-theme="contrast"] [class*="bg-gradient-to-r"] {
+    background-color: #ffff00 !important;
   }
 
   html[data-theme="contrast"] .text-slate-900,
@@ -163,12 +188,20 @@
   html[data-theme="contrast"] .text-slate-500,
   html[data-theme="contrast"] [class*="text-sky"],
   html[data-theme="contrast"] [class*="text-teal"],
-  html[data-theme="contrast"] [class*="text-emerald"] {
+  html[data-theme="contrast"] [class*="text-emerald"],
+  html[data-theme="contrast"] [class*="text-blue"],
+  html[data-theme="contrast"] [class*="text-rose"],
+  html[data-theme="contrast"] [class*="text-amber"] {
     color: #ffffff !important;
   }
 
-  html[data-theme="contrast"] a {
+  html[data-theme="contrast"] a,
+  html[data-theme="contrast"] a[class*="text-"] {
     color: #ffff00 !important;
+  }
+
+  html[data-theme="contrast"] :focus-visible {
+    outline-color: #ffff00 !important;
   }
 
   html[data-theme="contrast"] .border-emerald-200\/90,

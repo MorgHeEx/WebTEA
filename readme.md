@@ -39,7 +39,7 @@ O design prioriza acessibilidade cognitiva: tipografia legível, cores suaves, s
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/webtea.git
+git clone https://github.com/MorgHeEx/WebTEA.git
 
 # Acesse a pasta
 cd webtea
