@@ -55,7 +55,7 @@ export function InteractiveChecklist({
       {intro ? (
         <p className="max-w-prose text-base leading-relaxed text-slate-700">{intro}</p>
       ) : null}
-      <p className="text-sm font-medium text-slate-600">Ordem sugerida — marque no seu ritmo.</p>
+      <p className="text-sm font-medium text-slate-600">Ordem sugerida - marque no seu ritmo.</p>
       <ol className="space-y-3">
         {items.map((item, index) => {
           const isDone = Boolean(checked[index]);

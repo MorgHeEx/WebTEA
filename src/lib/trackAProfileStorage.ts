@@ -4,9 +4,6 @@ export type TrackAProfileState = {
   v: 1;
   gateCompleted: boolean;
   level: SupportLevel | null;
-  preferredName: string;
-  age: string;
-  sinceDiagnosis: string;
 };
 
 const KEY = "webtea-tracka-profile-v1";
@@ -16,9 +13,6 @@ export function defaultTrackAProfile(): TrackAProfileState {
     v: 1,
     gateCompleted: false,
     level: null,
-    preferredName: "",
-    age: "",
-    sinceDiagnosis: "",
   };
 }
 
@@ -33,9 +27,6 @@ export function loadTrackAProfile(): TrackAProfileState {
       v: 1,
       gateCompleted: Boolean(p.gateCompleted),
       level,
-      preferredName: typeof p.preferredName === "string" ? p.preferredName : "",
-      age: typeof p.age === "string" ? p.age : "",
-      sinceDiagnosis: typeof p.sinceDiagnosis === "string" ? p.sinceDiagnosis : "",
     };
   } catch {
     return defaultTrackAProfile();

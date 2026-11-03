@@ -16,7 +16,7 @@ type PhaseCardProps = {
 };
 
 /**
- * Cartão de “fase” emocional — cor distinta do restante para dar respiro visual.
+ * Cartão de “fase” emocional - cor distinta do restante para dar respiro visual.
  */
 export function PhaseCard({ title, tone, children }: PhaseCardProps) {
   return (

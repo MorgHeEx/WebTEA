@@ -1,14 +1,6 @@
-export type LovedRelation =
-  | "mae"
-  | "pai"
-  | "ava"
-  | "avo"
-  | "irmao"
-  | "irma"
-  | "parceiro"
-  | "amigo"
-  | "colega"
-  | "outro";
+export type SupportLevel = 1 | 2;
+
+export type LovedRelation = "parentesResponsaveis" | "amigosOutros";
 
 export type TrackBProfileState = {
   v: 1;
@@ -17,6 +9,7 @@ export type TrackBProfileState = {
   relationOther: string;
   treatmentGuidance: boolean;
   preferredName: string;
+  level: SupportLevel | null;
 };
 
 const KEY = "webtea-trackb-profile-v1";
@@ -29,6 +22,7 @@ export function defaultTrackBProfile(): TrackBProfileState {
     relationOther: "",
     treatmentGuidance: false,
     preferredName: "",
+    level: null,
   };
 }
 
@@ -36,22 +30,23 @@ export function loadTrackBProfile(): TrackBProfileState {
   try {
     const raw = localStorage.getItem(KEY);
     if (!raw) return defaultTrackBProfile();
-    const p = JSON.parse(raw) as Partial<TrackBProfileState>;
+    const p = JSON.parse(raw) as Omit<Partial<TrackBProfileState>, "relation"> & {
+      relation?: unknown;
+    };
     if (p.v !== 1) return defaultTrackBProfile();
     const rel = p.relation;
+    const level = p.level === 1 || p.level === 2 ? p.level : null;
     const relation: LovedRelation | null =
       rel === "mae" ||
       rel === "pai" ||
       rel === "ava" ||
       rel === "avo" ||
       rel === "irmao" ||
-      rel === "irma" ||
-      rel === "parceiro" ||
-      rel === "amigo" ||
-      rel === "colega" ||
-      rel === "outro"
-        ? rel
-        : null;
+      rel === "irma"
+        ? "parentesResponsaveis"
+        : rel === "parceiro" || rel === "amigo" || rel === "colega" || rel === "outro"
+          ? "amigosOutros"
+          : null;
     return {
       v: 1,
       gateCompleted: Boolean(p.gateCompleted),
@@ -59,6 +54,7 @@ export function loadTrackBProfile(): TrackBProfileState {
       relationOther: typeof p.relationOther === "string" ? p.relationOther : "",
       treatmentGuidance: Boolean(p.treatmentGuidance),
       preferredName: typeof p.preferredName === "string" ? p.preferredName : "",
+      level,
     };
   } catch {
     return defaultTrackBProfile();
@@ -74,24 +70,15 @@ export function saveTrackBProfile(state: TrackBProfileState): void {
 }
 
 export const RELATION_LABELS: Record<LovedRelation, string> = {
-  mae: "Mãe",
-  pai: "Pai",
-  ava: "Avó",
-  avo: "Avô",
-  irmao: "Irmão",
-  irma: "Irmã",
-  parceiro: "Parceiro(a)",
-  amigo: "Amigo(a)",
-  colega: "Colega",
-  outro: "Outro",
+  parentesResponsaveis: "Parentes e Responsáveis Legais",
+  amigosOutros: "Amigos e Outros",
 };
 
 export function relationLabelFromState(p: TrackBProfileState): string {
   if (!p.relation) return "";
-  if (p.relation === "outro") return p.relationOther.trim() || "Outro";
   return RELATION_LABELS[p.relation];
 }
 
 export function isPresumedLegalGuardian(relation: LovedRelation | null): boolean {
-  return relation === "mae" || relation === "pai" || relation === "ava" || relation === "avo";
+  return relation === "parentesResponsaveis";
 }

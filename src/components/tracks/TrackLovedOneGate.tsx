@@ -4,6 +4,7 @@ import {
   isPresumedLegalGuardian,
   loadTrackBProfile,
   type LovedRelation,
+  type SupportLevel,
   type TrackBProfileState,
   saveTrackBProfile,
   RELATION_LABELS,
@@ -13,23 +14,20 @@ type TrackLovedOneGateProps = {
   onComplete: () => void;
 };
 
-const RELATION_ORDER: LovedRelation[] = [
-  "mae",
-  "pai",
-  "ava",
-  "avo",
-  "irmao",
-  "irma",
-  "parceiro",
-  "amigo",
-  "colega",
-  "outro",
-];
+const RELATION_ORDER: LovedRelation[] = ["parentesResponsaveis", "amigosOutros"];
 
 export function TrackLovedOneGate({ onComplete }: TrackLovedOneGateProps) {
   const [profile, setProfile] = useState<TrackBProfileState>(() => loadTrackBProfile());
 
-  const canContinue = profile.relation !== null && (profile.relation !== "outro" || profile.relationOther.trim());
+  const canContinue = profile.level !== null && profile.relation !== null;
+
+  function setLevel(level: SupportLevel) {
+    setProfile((p) => {
+      const next = { ...p, level };
+      saveTrackBProfile(next);
+      return next;
+    });
+  }
 
   function setRelation(rel: LovedRelation) {
     setProfile((p) => {
@@ -57,6 +55,7 @@ export function TrackLovedOneGate({ onComplete }: TrackLovedOneGateProps) {
       ...profile,
       gateCompleted: true,
       relation: profile.relation as LovedRelation,
+      level: profile.level as SupportLevel,
     };
     saveTrackBProfile(next);
     setProfile(next);
@@ -78,6 +77,62 @@ export function TrackLovedOneGate({ onComplete }: TrackLovedOneGateProps) {
       </header>
 
       <div className="space-y-8">
+        <section
+          className="rounded-2xl border border-emerald-200/80 bg-emerald-50/35 p-6 shadow-sm md:p-8"
+          aria-labelledby="b-gate-level-heading"
+        >
+          <h2 id="b-gate-level-heading" className="text-lg font-semibold text-slate-900">
+            Nível de suporte
+          </h2>
+          <p className="mt-2 max-w-prose text-sm leading-relaxed text-slate-600">
+            Escolha a opção que mais se aproxima do suporte que você costuma precisar ao acolher
+            alguém próximo.
+          </p>
+
+          <div className="mt-5 flex flex-col gap-3 sm:gap-4">
+            <button
+              type="button"
+              onClick={() => setLevel(1)}
+              className={`min-h-[3.25rem] w-full rounded-2xl border-2 px-5 py-4 text-left text-base font-semibold leading-snug transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 sm:text-lg ${
+                profile.level === 1
+                  ? "border-teal-500 bg-white shadow-md"
+                  : "border-emerald-200 bg-white/80 hover:border-emerald-300"
+              }`}
+            >
+              Nível 1 – Pouco suporte
+            </button>
+            <button
+              type="button"
+              onClick={() => setLevel(2)}
+              className={`min-h-[3.25rem] w-full rounded-2xl border-2 px-5 py-4 text-left text-base font-semibold leading-snug transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 sm:text-lg ${
+                profile.level === 2
+                  ? "border-teal-500 bg-white shadow-md"
+                  : "border-emerald-200 bg-white/80 hover:border-emerald-300"
+              }`}
+            >
+              Nível 2 – Suporte substancial
+            </button>
+
+            <div
+              className="rounded-2xl border-2 border-dashed border-slate-300/90 bg-slate-50/80 p-4"
+              aria-describedby="b-lvl3-hint"
+            >
+              <button
+                type="button"
+                disabled
+                aria-disabled="true"
+                title="Estamos preparando conteúdo específico para o nível 3"
+                className="w-full cursor-not-allowed rounded-xl border border-slate-200 bg-slate-100/80 px-4 py-3 text-left text-base font-semibold text-slate-500"
+              >
+                Nível 3 – Em breve
+              </button>
+              <p className="mt-2 text-xs leading-relaxed text-slate-500" id="b-lvl3-hint">
+                Estamos preparando conteúdo específico para o nível 3.
+              </p>
+            </div>
+          </div>
+        </section>
+
         <section
           className="rounded-2xl border border-emerald-200/80 bg-emerald-50/35 p-6 shadow-sm md:p-8"
           aria-labelledby="b-gate-rel-heading"
@@ -103,22 +158,6 @@ export function TrackLovedOneGate({ onComplete }: TrackLovedOneGateProps) {
               </button>
             ))}
           </div>
-
-          {profile.relation === "outro" ? (
-            <div className="mt-4">
-              <label htmlFor="b-rel-other" className="text-sm font-medium text-slate-800">
-                Descreva a relação
-              </label>
-              <input
-                id="b-rel-other"
-                type="text"
-                value={profile.relationOther}
-                onChange={(e) => patch({ relationOther: e.target.value })}
-                className="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-slate-900 shadow-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-200"
-                placeholder="Ex.: tia, padrasto…"
-              />
-            </div>
-          ) : null}
         </section>
 
         {showTreatment ? (
@@ -127,7 +166,7 @@ export function TrackLovedOneGate({ onComplete }: TrackLovedOneGateProps) {
             aria-labelledby="b-gate-treat-heading"
           >
             <h2 id="b-gate-treat-heading" className="text-lg font-semibold text-slate-900">
-              Orientações para quem responde legalmente
+              Orientações para quem é responsável
             </h2>
             <label className="mt-4 flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-slate-50/60 px-3 py-3">
               <input
@@ -144,30 +183,6 @@ export function TrackLovedOneGate({ onComplete }: TrackLovedOneGateProps) {
           </section>
         ) : null}
 
-        <section
-          className="rounded-2xl border border-slate-200/80 bg-white/90 p-6 shadow-sm md:p-8"
-          aria-labelledby="b-gate-opt-heading"
-        >
-          <h2 id="b-gate-opt-heading" className="text-lg font-semibold text-slate-900">
-            Identificação (opcional)
-          </h2>
-          <p className="mt-2 rounded-lg bg-emerald-50/70 px-3 py-2 text-sm font-medium text-emerald-900">
-            Você não precisa preencher isso para continuar.
-          </p>
-          <div className="mt-4">
-            <label htmlFor="b-pref-name" className="text-sm font-medium text-slate-800">
-              Como prefere ser chamado (apelido ou primeiro nome)
-            </label>
-            <input
-              id="b-pref-name"
-              type="text"
-              autoComplete="nickname"
-              value={profile.preferredName}
-              onChange={(e) => patch({ preferredName: e.target.value })}
-              className="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-slate-900 shadow-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-200"
-            />
-          </div>
-        </section>
 
         <div className="flex justify-center pb-6">
           <button

@@ -40,7 +40,7 @@ const ESTADUAL: { title: string; law: string }[] = [
   },
   {
     title:
-      "Proteção legal como pessoa com condição oculta — Cordão Girassol disponível no Super Fácil",
+      "Proteção legal como pessoa com condição oculta - Cordão Girassol disponível no Super Fácil",
     law: "Lei Estadual 3.240/2025",
   },
 ];
@@ -52,7 +52,7 @@ type AmapaDireitosSectionProps = {
 
 export function AmapaDireitosSection({
   title,
-  intro = "Um mapa enxuto do que costuma existir por lei — confirme detalhes com profissionais e órgãos oficiais.",
+  intro = "Um mapa enxuto do que costuma existir por lei - confirme detalhes com profissionais e órgãos oficiais.",
 }: AmapaDireitosSectionProps) {
   return (
     <div className="space-y-8">
@@ -79,7 +79,7 @@ export function AmapaDireitosSection({
 
       <PhaseCard title="Apoio e denúncia" tone="sky">
         <p className="max-w-prose text-sm leading-relaxed text-slate-700">
-          <strong className="text-slate-900">AMA-AP</strong> — Associação de Pais e Amigos Autistas
+          <strong className="text-slate-900">AMA-AP</strong> - Associação de Pais e Amigos Autistas
           do Amapá.
         </p>
         <p className="max-w-prose text-sm leading-relaxed text-slate-700">

@@ -7,7 +7,7 @@ type DocumentCheckboxListProps = {
 };
 
 /**
- * Checklist simples (documentos) com persistência externa — índices globais no array checked.
+ * Checklist simples (documentos) com persistência externa - índices globais no array checked.
  */
 export function DocumentCheckboxList({
   title,

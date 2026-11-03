@@ -4,7 +4,7 @@ export function DireitoTerapiaSection() {
   return (
     <div className="space-y-5">
       <p className="max-w-prose">
-        Terapia não é favor — é direito. Abaixo, caminhos pelo plano de saúde e pelo SUS.
+        Terapia não é favor - é direito. Abaixo, caminhos pelo plano de saúde e pelo SUS.
       </p>
 
       <PhaseCard title="Pelo plano de saúde" tone="sky">

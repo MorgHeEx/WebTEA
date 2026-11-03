@@ -2,42 +2,92 @@ import { PhaseCard } from "../ui/PhaseCard";
 
 type Service = {
   title: string;
-  lines: string[];
+  lines: (string | { text: string; href: string })[];
 };
 
 const SERVICES: Service[] = [
   {
-    title: "CAPSi — Centro de Atenção Psicossocial Infantil",
+    title: "Centro de Atenção Psicossocial Infantil Juvenil (CAPSi de Macapá)",
     lines: [
-      "Endereço: Rua Redenção, 432 – Pedrinhas (Complexo Macapá Criança)",
-      "Público: Crianças e adolescentes com TEA e transtornos mentais graves",
-      "Atendimento: Segunda a sexta, manhã e tarde",
-      "Aceita demanda espontânea e encaminhamentos",
-      "Contato: verificar com a unidade",
+      {
+        text: "Endereço: Rua Redenção, 432 – Jardim Marco Zero (Complexo Macapá Criança)",
+        href:"https://maps.app.goo.gl/iEDNRPRwRMfZ3mqp7",
+      },
+      "Público: crianças e adolescentes de 6 a 17 anos de idade com transtorno mentais graves e persistentes, incluindo TEA",
+      "Atendimento: de segunda a sexta-feira em dois turnos (manhã e tarde), atende demandas espontâneas e encaminhadas de outros serviços",
     ],
   },
   {
-    title: "CAPS III – Casa Gentileza",
+    title: "CAPS II Esperança - Centro de Atenção Psicossocial (Zona Norte - Macapá)",
     lines: [
-      "Endereço: Av. Marcílio Dias, 1395 – Jesus de Nazaré, Macapá",
-      "Público: Adultos a partir de 18 anos com transtornos mentais graves",
-      "Observação: Para adultos com TEA e comorbidades",
+      {
+        text: "Endereço: R. Rio Branco, 686 - Infraero, Macapá - AP, 68908-048",
+        href:"https://maps.app.goo.gl/2Xpa3zFrVi1duob48",
+      },
+      "Público: pessoas maiores de 18 anos",
+      "Atendimento: de segunda a sexta-feira, das 8h às 18h)",
     ],
   },
   {
-    title: "CER — Centro Especializado em Reabilitação de Macapá",
+    title: "Centro de Atenção Psicossocial (CAPS III Casa Gentileza, Macapá)",
     lines: [
-      "Público: Pessoas com TEA de todas as idades",
-      "Serviços: Terapia ocupacional, fonoaudiologia, psicologia, neuropediatria, avaliação multiprofissional para laudo",
-      "Contato para grupo terapêutico de pais/responsáveis: (96) 98802-8388",
+      {
+        text:"Endereço: Av. Marcílio Dias, 1395 – Jesus de Nazaré, Macapá",
+        href:"https://maps.app.goo.gl/C6R7Ccxg9or6bb1T7",
+      },
+      "Público: pessoas a partir de 18 anos de idade com transtornos mentais graves e persistentes. Especificamente os transtornos mentais maiores/psicóticos. Ex: esquizofrenia e transtorno afetivo bipolar",
+      "Atendimento: de segunda a sexta-feira, das 8h às 18h",
     ],
   },
   {
-    title: "Projeto TEAtendemos (Prefeitura de Macapá)",
+    title: "CAPS - Centro de Atenção Psico Social (Mazagão)",
     lines: [
-      "O que é: Mutirões periódicos para emissão de laudos de TEA para quem está na fila de espera",
-      "Como acessar: Pelo CAPSi ou CER — solicitar inclusão na fila",
-      "Especialistas disponíveis: Neuropediatra, psiquiatra, terapeuta ocupacional, fonoaudiólogo, psicólogo, exames (BERA, tomografia, eletroencefalograma)",
+      {
+        text:"Endereço: Av. Pedro Aires Aleluia, 100 - Mazagão, AP, 68940-000",
+        href:"https://maps.app.goo.gl/7u4mjxJsCLAaCUZn8",
+      },
+      "Atendimento: de segunda a sexta-feira, das 8h às 18h",
+    ],
+  },
+  {
+    title: "Centro de Atenção Psicossocial Tipo 1 (CAPS I de Oiapoque)",
+    lines: [
+      {
+        text:"R. Djalma Limeira, 581 - Oiapoque, AP, 68980-000",
+        href:"https://maps.app.goo.gl/gwD4cjnBsfHULtmc7",
+      },
+      "Público-alvo: pessoas a partir de 12 anos de idade que apresentam prioritariamente intenso sofrimento psíquico decorrente de transtornos mentais graves e persistentes, incluindo aqueles relacionados ao uso de substâncias psicoativas, e outras situações clínicas que impossibilitem estabelecer laços sociais e realizar projetos de vida",
+      "Atendimento: de segunda a sexta-feira em dois turnos (manhã e tarde), atende demandas espontâneas e encaminhadas de outros serviços",
+    ],
+  },
+  {
+    title: "Centro de Atenção Psicossocial Tipo 1 (CAPS 1 de Laranjal do Jari)",
+    lines: [
+      "Endereço: Rua Vitória Régia, 2500, Laranjal do Jari-AP",
+      "Público-alvo: pessoas a partir de 18 anos de idade que apresentam prioritariamente intenso sofrimento psíquico decorrente de transtornos mentais graves e persistentes, incluindo aqueles relacionados ao uso de substâncias psicoativas, e outras situações clínicas que impossibilitem estabelecer laços sociais e realizar projetos de vida",
+      "Atendimento: de segunda a sexta-feira em dois turnos (manhã e tarde), atende demandas espontâneas e encaminhadas de outros serviços",
+    ],
+  },
+  {
+    title: "Centro de Atenção Psicossocial Infantojuvenil (CAPS IJ / Espaço JAPIIM de Santana)",
+    lines: [
+      {
+        text: "R. Pres. Arthur Costa e Silva, 1434 - Remédios, Santana - AP, 68925-099",
+        href: "https://maps.app.goo.gl/Zy2fJLdW75a3bqRu6",
+      },
+      "Público-alvo: crianças e adolescentes de 6 a 17 anos de idade com transtornos mentais graves e persistentes e com necessidades decorrentes do uso de álcool e outras drogas",
+      "Atendimento: de segunda a sexta-feira em dois turnos (manhã e tarde), atende demandas espontâneas e encaminhadas de outros serviços",
+    ],
+  },
+  {
+    title: "Centro de Atenção Psicossocial Tipo 1 (CAPS I Renovar - Porto Grande)",
+    lines: [
+      {
+        text: "Endereço: Av. Soldado Valdinei Pereira, s/n, bairro Nova Esperança, Porto Grande-AP, 68997-000 (Entre Centro Especializado de Reabilitação e UBS Nova Esperança)",
+        href: "https://maps.app.goo.gl/eKJERmCxjesVAbbQ6",
+      },
+      "Público-alvo: pessoas a partir de 18 anos de idade que apresentam prioritariamente intenso sofrimento psíquico decorrente de transtornos mentais graves e persistentes, incluindo aqueles relacionados ao uso de substâncias psicoativas, e outras situações clínicas que impossibilitem estabelecer laços sociais e realizar projetos de vida",
+      "Atendimento: de segunda a sexta-feira em dois turnos (manhã e tarde), atende demandas espontâneas e encaminhadas de outros serviços",
     ],
   },
 ];
@@ -50,7 +100,7 @@ export function AtendimentoSusSection({ tone = "sky" }: AtendimentoSusSectionPro
   return (
     <div className="space-y-5">
       <p className="max-w-prose">
-        Pontos de partida no SUS em Macapá. Confirme horários e disponibilidade antes de ir.
+        Pontos de partida no SUS no Amapá. Confirme horários e disponibilidade antes de ir.
       </p>
 
       <ul className="space-y-4">
@@ -59,7 +109,20 @@ export function AtendimentoSusSection({ tone = "sky" }: AtendimentoSusSectionPro
             <PhaseCard title={s.title} tone={tone === "mint" ? "mint" : "sky"}>
               <ul className="list-disc space-y-2 pl-5">
                 {s.lines.map((line) => (
-                  <li key={line}>{line}</li>
+                  <li key={typeof line === "string" ? line : line.text}>
+                    {typeof line === "string" ? (
+                      line
+                    ) : (
+                      <a
+                        href={line.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-sky-800 underline underline-offset-2 hover:text-sky-900"
+                      >
+                        {line.text}
+                      </a>
+                    )}
+                  </li>
                 ))}
               </ul>
             </PhaseCard>

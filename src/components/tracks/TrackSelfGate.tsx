@@ -23,14 +23,6 @@ export function TrackSelfGate({ onComplete }: TrackSelfGateProps) {
     });
   }
 
-  function patchOptional(patch: Partial<Pick<TrackAProfileState, "preferredName" | "age" | "sinceDiagnosis">>) {
-    setProfile((p) => {
-      const next = { ...p, ...patch };
-      saveTrackAProfile(next);
-      return next;
-    });
-  }
-
   function handleContinue() {
     if (!canContinue) return;
     const next: TrackAProfileState = {
@@ -51,8 +43,7 @@ export function TrackSelfGate({ onComplete }: TrackSelfGateProps) {
           Antes de começar, um passo rápido
         </h1>
         <p className="mx-auto mt-3 max-w-xl text-pretty text-base leading-relaxed text-slate-600">
-          Isso ajuda a deixar a trilha mais próxima da sua realidade. Você pode mudar depois se
-          quiser — os dados ficam só neste aparelho.
+          Isso ajuda a deixar a trilha mais próxima da sua realidade.
         </p>
       </header>
 
@@ -62,7 +53,7 @@ export function TrackSelfGate({ onComplete }: TrackSelfGateProps) {
           aria-labelledby="gate-level-heading"
         >
           <h2 id="gate-level-heading" className="text-lg font-semibold text-slate-900">
-            Nível de suporte (obrigatório para continuar)
+            Nível de suporte
           </h2>
           <p className="mt-2 max-w-prose text-sm leading-relaxed text-slate-600">
             Escolha a opção que mais se aproxima do que costuma aparecer no seu laudo ou na sua
@@ -114,57 +105,12 @@ export function TrackSelfGate({ onComplete }: TrackSelfGateProps) {
         </section>
 
         <section
-          className="rounded-2xl border border-slate-200/80 bg-white/90 p-6 shadow-sm md:p-8"
+          className="flex justify-center pb-6"
           aria-labelledby="gate-opt-heading"
         >
-          <h2 id="gate-opt-heading" className="text-lg font-semibold text-slate-900">
-            Identificação pessoal
-          </h2>
           <p className="mt-2 rounded-lg bg-emerald-50/70 px-3 py-2 text-sm font-medium text-emerald-900">
-            Você não precisa preencher isso para continuar.
+            Seus dados ficam apenas em seu dispositivo.
           </p>
-
-          <div className="mt-5 space-y-4">
-            <div>
-              <label htmlFor="pref-name" className="text-sm font-medium text-slate-800">
-                Nome (como prefere ser chamado)
-              </label>
-              <input
-                id="pref-name"
-                type="text"
-                autoComplete="nickname"
-                value={profile.preferredName}
-                onChange={(e) => patchOptional({ preferredName: e.target.value })}
-                className="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-slate-900 shadow-sm focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-200"
-              />
-            </div>
-            <div>
-              <label htmlFor="pref-age" className="text-sm font-medium text-slate-800">
-                Idade
-              </label>
-              <input
-                id="pref-age"
-                type="text"
-                inputMode="numeric"
-                value={profile.age}
-                onChange={(e) => patchOptional({ age: e.target.value })}
-                className="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-slate-900 shadow-sm focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-200"
-              />
-            </div>
-            <div>
-              <label htmlFor="pref-since" className="text-sm font-medium text-slate-800">
-                Há quanto tempo foi diagnosticado (em meses ou anos)
-              </label>
-              <input
-                id="pref-since"
-                type="text"
-                value={profile.sinceDiagnosis}
-                onChange={(e) => patchOptional({ sinceDiagnosis: e.target.value })}
-                className="mt-1 w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-slate-900 shadow-sm focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-200"
-                placeholder="Ex.: 3 meses, 2 anos…"
-              />
-            </div>
-          </div>
         </section>
 
         <div className="flex justify-center pb-6">

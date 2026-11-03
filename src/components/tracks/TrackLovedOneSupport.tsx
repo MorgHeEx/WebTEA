@@ -13,7 +13,7 @@ export function TrackLovedOneSupport() {
 
       <PhaseCard title="O que costuma ajudar" tone="mint">
         <ul className="list-disc space-y-2 pl-5">
-          <li>Perguntar como a pessoa quer ser apoiada — em vez de assumir.</li>
+          <li>Perguntar como a pessoa quer ser apoiada - em vez de assumir.</li>
           <li>Validar o cansaço e a confusão sem tentar “consertar” na hora.</li>
           <li>Oferecer ajuda concreta e pequena (acompanhar a uma consulta, organizar documentos).</li>
           <li>Respeitar pausas, stimming e limites sensoriais sem julgamento.</li>
@@ -31,7 +31,7 @@ export function TrackLovedOneSupport() {
 
       <p className="max-w-prose">
         Cuidar de você também faz parte da rede: apoio esgotado vira pressão. Se precisar,
-        busque um profissional para processar a notícia — isso fortalece o vínculo, não
+        busque um profissional para processar a notícia - isso fortalece o vínculo, não
         enfraquece.
       </p>
     </div>

@@ -29,41 +29,29 @@ export function ContactPage({ onBack }: ContactPageProps) {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-slate-900">Entre em contato</h2>
-          <p className="mt-2 text-sm text-slate-600">Dúvidas, sugestões ou solicitações de remoção de conteúdo.</p>
+          <h2 className="text-xl font-semibold text-slate-900">Equipe de Desenvolvimento</h2>
           <ul className="mt-4 space-y-2 text-sm">
             <li>
-              <a className="text-sky-800 underline underline-offset-2" href="mailto:jamilly@email.com">
-                jamilly@email.com
+              <strong>Luã:</strong>{" "}
+              <a className="text-sky-800 underline underline-offset-2" href="mailto:luaotaviops@gmail.com">
+                luaotaviops@gmail.com
               </a>
             </li>
             <li>
-              <a className="text-sky-800 underline underline-offset-2" href="mailto:lua@email.com">
-                lua@email.com
+              <strong>Miguel:</strong>{" "}
+              <a className="text-sky-800 underline underline-offset-2" href="mailto:miguelsmoraes@hotmail.com">
+                miguelsmoraes@hotmail.com
               </a>
             </li>
             <li>
-              <a className="text-sky-800 underline underline-offset-2" href="mailto:miguel@email.com">
-                miguel@email.com
+              <strong>Jamilly:</strong>{" "}
+              <a className="text-sky-800 underline underline-offset-2" href="mailto:jamilly.jaroca@gmail.com">
+                jamilly.jaroca@gmail.com
               </a>
             </li>
           </ul>
         </section>
-
-        <section>
-          <h2 className="text-xl font-semibold text-slate-900">Solicitar remoção de comentário</h2>
-          <p className="mt-3 text-sm leading-relaxed text-slate-700">
-            Se você publicou um comentário no Mural de Conselhos ou na seção de Vivências e deseja
-            removê-lo, entre em contato pelo e-mail acima informando o conteúdo da mensagem e a data
-            aproximada da publicação.
-          </p>
-          <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-950">
-            <p>
-              <span aria-hidden>⚠️</span> Esta funcionalidade está em desenvolvimento. Em breve será
-              possível solicitar remoções diretamente pelo site.
-            </p>
-          </div>
-        </section>
+        
       </article>
     </div>
   );

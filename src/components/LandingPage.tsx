@@ -4,7 +4,7 @@ type LandingPageProps = {
 };
 
 /**
- * Paleta sugerida (Tailwind) — pastéis, contraste confortável para leitura longa:
+ * Paleta sugerida (Tailwind) - pastéis, contraste confortável para leitura longa:
  * - Fundo / gradiente: from-sky-50 via-emerald-50/35 to-sky-50 (App), body bg-sky-50
  * - Trilha A (eu): border-sky-200, bg-sky-100/80, foco ring-sky-500, texto text-slate-900
  * - Trilha B (próximo): border-emerald-200, bg-emerald-50/90, foco ring-emerald-600
@@ -27,7 +27,7 @@ export function LandingPage({ onChooseSelf, onChooseLovedOne }: LandingPageProps
           className="mx-auto mt-6 max-w-xl text-pretty text-lg leading-relaxed text-slate-600 sm:text-xl sm:leading-relaxed"
         >
           Este espaço foi pensado para reduzir a ansiedade do primeiro momento e organizar
-          os próximos passos com calma. Escolha o que mais se aproxima da sua situação —
+          os próximos passos com calma. Escolha o que mais se aproxima da sua situação -
           você pode voltar quando quiser.
         </p>
       </header>

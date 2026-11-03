@@ -37,7 +37,7 @@ const selfSteps: InteractiveChecklistItem[] = [
   },
   {
     title: "Evite decisões grandes nas primeiras semanas.",
-    hint: "Emprego, término, mudança brusca de curso ou escola podem esperar um pouco — seu sistema nervoso está processando muita coisa.",
+    hint: "Emprego, término, mudança brusca de curso ou escola podem esperar um pouco - seu sistema nervoso está processando muita coisa.",
   },
   {
     title: "Primeiro profissional: neuropsicólogo ou psiquiatra com experiência em TEA em adultos.",
@@ -45,7 +45,7 @@ const selfSteps: InteractiveChecklistItem[] = [
   },
   {
     title: "Segundo profissional (opcional, mas recomendado): psicólogo com ACT ou DBT.",
-    hint: "Essas abordagens costumam ajudar com emoções intensas, culpa e planejamento de vida — sem prometer “conserto rápido”.",
+    hint: "Essas abordagens costumam ajudar com emoções intensas, culpa e planejamento de vida - sem prometer “conserto rápido”.",
   },
   {
     title: "Terceiro (se fizer sentido): terapeuta ocupacional para mapeamento sensorial.",
@@ -53,7 +53,7 @@ const selfSteps: InteractiveChecklistItem[] = [
   },
   {
     title: "Entre em comunidades antes de “só” ir a consultórios.",
-    hint: "O pertencimento regula ansiedade. Busque comunidades online de autistas — grupos focados em diagnóstico tardio e neurodivergência.",
+    hint: "O pertencimento regula ansiedade. Busque comunidades online de autistas - grupos focados em diagnóstico tardio e neurodivergência.",
     bullets: [
       "Prefira espaços moderados e com regras claras de respeito.",
       "Se algo aumentar culpa ou comparação dolorosa, é permissível sair.",
@@ -204,7 +204,7 @@ function TrackSelfMain({
             isViewed={isSectionViewed("self-s1")}
           >
             <p className="max-w-prose">
-              É normal sentir confusão ou alívio — ou outras emoções misturadas. Não existe reação
+              É normal sentir confusão ou alívio - ou outras emoções misturadas. Não existe reação
               &quot;certa&quot;.
             </p>
             <p className="max-w-prose">
@@ -228,7 +228,7 @@ function TrackSelfMain({
                 </p>
               </PhaseCard>
 
-              <PhaseCard title="Se você sentiu alívio — e culpa por sentir alívio" tone="rose">
+              <PhaseCard title="Se você sentiu alívio - e culpa por sentir alívio" tone="rose">
                 <p className="max-w-prose">
                   Alívio costuma aparecer quando algo finalmente tem nome. Isso não apaga
                   dificuldades, só deixa menos solitário carregar tudo sem explicação.
@@ -238,7 +238,7 @@ function TrackSelfMain({
                   antigo de se diminuir.
                 </p>
                 <p className="max-w-prose">
-                  Você pode honrar o alívio e, ao mesmo tempo, sentir tristeza — tudo pode caber
+                  Você pode honrar o alívio e, ao mesmo tempo, sentir tristeza - tudo pode caber
                   aqui.
                 </p>
               </PhaseCard>
@@ -253,7 +253,7 @@ function TrackSelfMain({
             isViewed={isSectionViewed("self-s2")}
           >
             <InteractiveChecklist
-              intro="Um caminho possível, sem pressa de fazer tudo junto. Marque o que já fez — seu progresso fica salvo neste aparelho."
+              intro="Um caminho possível, sem pressa de fazer tudo junto. Marque o que já fez - seu progresso fica salvo neste aparelho."
               items={selfSteps}
               checked={checklist}
               accent="sky"

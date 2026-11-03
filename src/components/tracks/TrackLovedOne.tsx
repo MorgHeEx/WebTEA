@@ -31,12 +31,12 @@ const CHECKLIST_ID = "loved-steps";
 
 const lovedSteps: InteractiveChecklistItem[] = [
   {
-    title: "Leia sobre TEA por fontes confiáveis — não só por grupos de WhatsApp.",
+    title: "Leia sobre TEA por fontes confiáveis - não só por grupos de WhatsApp.",
     hint: "Sugestões: livro “Neurotribes” (Steve Silberman) e o canal Papo de Autista (YouTube).",
   },
   {
     title: "Separe suas expectativas das necessidades reais da pessoa.",
-    hint: "O que você imaginou para o futuro pode doer — e ainda assim a prioridade agora é o que sustenta a pessoa no presente.",
+    hint: "O que você imaginou para o futuro pode doer - e ainda assim a prioridade agora é o que sustenta a pessoa no presente.",
   },
   {
     title: "Converse sobre como ela quer ser apoiada.",
@@ -44,7 +44,7 @@ const lovedSteps: InteractiveChecklistItem[] = [
   },
   {
     title: "Profissionais para você (familiar): psicólogo para processar a notícia.",
-    hint: "Cuidar de você não é egoísmo — é o que mantém apoio estável em vez de apoio esgotado.",
+    hint: "Cuidar de você não é egoísmo - é o que mantém apoio estável em vez de apoio esgotado.",
   },
   {
     title: "Profissionais para a pessoa diagnosticada: os mesmos da trilha “para você” + fonoaudiologia se houver dificuldades de comunicação social.",
@@ -193,7 +193,7 @@ function TrackLovedOneMain({ onBack, onSwitchTrack, onContact }: TrackLovedOnePr
             labelTone="teal"
           >
             <p className="max-w-prose">
-              Às vezes a primeira reação não é carinho — é um não cabe na boca. Isso também é humano.
+              Às vezes a primeira reação não é carinho - é um não cabe na boca. Isso também é humano.
             </p>
 
             <div className="space-y-4 pt-2">
@@ -204,7 +204,7 @@ function TrackLovedOneMain({ onBack, onSwitchTrack, onContact }: TrackLovedOnePr
                   imaginado.
                 </p>
                 <p className="max-w-prose">
-                  Negação pode ser um jeito de ganhar tempo — só que, sem perceber, ela empurra a
+                  Negação pode ser um jeito de ganhar tempo - só que, sem perceber, ela empurra a
                   pessoa diagnosticada para se justificar sozinha.
                 </p>
               </PhaseCard>
@@ -253,7 +253,7 @@ function TrackLovedOneMain({ onBack, onSwitchTrack, onContact }: TrackLovedOnePr
             labelTone="teal"
           >
             <InteractiveChecklist
-              intro="Um roteiro possível — a ordem é sugestão. Marque no seu tempo; salvamos automaticamente neste aparelho."
+              intro="Um roteiro possível - a ordem é sugestão. Marque no seu tempo; salvamos automaticamente neste aparelho."
               items={lovedSteps}
               checked={checklist}
               accent="emerald"
@@ -292,7 +292,7 @@ function TrackLovedOneMain({ onBack, onSwitchTrack, onContact }: TrackLovedOnePr
             labelTone="teal"
           >
             <p className="max-w-prose">
-              Capacitismo não só “ofende” — ele empurra a pessoa a se apagar. Alguns exemplos comuns:
+              Capacitismo não só “ofende” - ele empurra a pessoa a se apagar. Alguns exemplos comuns:
             </p>
             <ul className="list-disc space-y-3 pl-5 text-base leading-relaxed text-slate-700">
               <li>
@@ -302,7 +302,7 @@ function TrackLovedOneMain({ onBack, onSwitchTrack, onContact }: TrackLovedOnePr
               </li>
               <li>
                 <strong className="text-slate-900">Proibir stimming.</strong> Movimentos repetitivos
-                costumam regular o sistema nervoso — proibir sem combinar alternativa pode aumentar
+                costumam regular o sistema nervoso - proibir sem combinar alternativa pode aumentar
                 crises.
               </li>
               <li>
@@ -311,7 +311,7 @@ function TrackLovedOneMain({ onBack, onSwitchTrack, onContact }: TrackLovedOnePr
               </li>
               <li>
                 <strong className="text-slate-900">Tratar sensibilidade sensorial como “frescura”.</strong>{" "}
-                Luz, cheiro e som podem ser dolorosos de verdade — ajustar o ambiente é apoio, não
+                Luz, cheiro e som podem ser dolorosos de verdade - ajustar o ambiente é apoio, não
                 mimimi.
               </li>
             </ul>

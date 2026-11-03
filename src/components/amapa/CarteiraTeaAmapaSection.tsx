@@ -79,7 +79,7 @@ export function CarteiraTeaAmapaSection({
       <div className="mt-6 space-y-6">
         <div>
           <p className="text-sm font-semibold text-slate-900">Documentos necessários</p>
-          <p className="mt-1 max-w-prose text-sm text-slate-600">Marque o que já separou — salvamos neste aparelho.</p>
+          <p className="mt-1 max-w-prose text-sm text-slate-600">Marque o que já separou - salvamos neste aparelho.</p>
           <div className="mt-4 space-y-5">
             <DocumentCheckboxList
               title="Documentos da pessoa com TEA"
@@ -100,7 +100,7 @@ export function CarteiraTeaAmapaSection({
 
         <PhaseCard title="Importante sobre originais" tone="mint">
           <p className="max-w-prose text-sm leading-relaxed text-slate-800">
-            Leve apenas os documentos originais — não é necessário tirar cópia. Tudo é digitalizado
+            Leve apenas os documentos originais - não é necessário tirar cópia. Tudo é digitalizado
             e enviado pelo sistema CADTEA para validação.
           </p>
         </PhaseCard>
