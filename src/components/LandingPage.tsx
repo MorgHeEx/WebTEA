@@ -11,6 +11,7 @@ type LandingPageProps = {
  * - Cartões de conteúdo: bg-white/90, border-slate-200/80, texto text-slate-700
  * - Hierarquia: títulos text-slate-900; rótulos suaves text-sky-800 / text-teal-800
  * - Foco global: outline-sky-600 (index.css :focus-visible)
+ * test
  */
 export function LandingPage({ onChooseSelf, onChooseLovedOne }: LandingPageProps) {
   return (
