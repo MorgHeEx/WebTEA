@@ -41,7 +41,7 @@ const selfSteps: InteractiveChecklistItem[] = [
   },
   {
     title: "Primeiro profissional: neuropsicólogo ou psiquiatra com experiência em TEA em adultos.",
-    hint: "Antes de marcar, pergunte com calma se a pessoa atende autistas adultos e se tem familiaridade com diagnóstico tardio.",
+    hint: "Antes de agendar, confirme se o profissional tem especialidade no atendimento de crianças e adolescentes ou de adultos.",
   },
   {
     title: "Segundo profissional (opcional, mas recomendado): psicólogo com ACT ou DBT.",
