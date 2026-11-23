@@ -320,7 +320,8 @@ export function DisplaySettingsPanel({
               step={5}
               value={settings.zoom}
               onChange={(e) => onUpdate({ zoom: Number(e.target.value) })}
-              className="w-full accent-sky-600"
+              className="zoom-slider w-full"
+              aria-label="Escala da página"
               aria-valuetext={`${settings.zoom} por cento`}
             />
             <button

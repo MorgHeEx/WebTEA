@@ -138,6 +138,7 @@ export function applyDisplaySettings(settings: DisplaySettings): void {
   root.style.setProperty("--page-zoom", String(settings.zoom / 100));
 
   root.dataset.theme = settings.theme;
+  root.dataset.lineSpacing = settings.lineSpacing;
   root.dataset.reduceMotion = settings.reduceMotion ? "true" : "false";
   root.dataset.highlightLinks = settings.highlightLinks ? "true" : "false";
   root.dataset.extraSpacing = settings.extraSpacing ? "true" : "false";

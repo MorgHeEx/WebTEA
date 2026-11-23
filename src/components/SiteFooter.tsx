@@ -12,7 +12,7 @@ export function SiteFooter({ onContact }: SiteFooterProps) {
       >
         Fale conosco
       </button>
-      <span className="pointer-events-none text-[10px] leading-none text-slate-300">v0.3.4</span>
+      <span className="pointer-events-none text-[10px] leading-none text-slate-300">v0.4.2</span>
     </footer>
   );
 }

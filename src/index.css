@@ -58,6 +58,46 @@
     min-height: calc(100dvh / var(--page-zoom));
   }
 
+  .zoom-slider {
+    appearance: none;
+    height: 2rem;
+    background: transparent;
+    cursor: ew-resize;
+    touch-action: pan-y;
+  }
+
+  .zoom-slider::-webkit-slider-runnable-track {
+    height: 0.375rem;
+    border-radius: 9999px;
+    background: #cbd5e1;
+  }
+
+  .zoom-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: -0.4375rem;
+    border: 2px solid white;
+    border-radius: 9999px;
+    background: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+
+  .zoom-slider::-moz-range-track {
+    height: 0.375rem;
+    border-radius: 9999px;
+    background: #cbd5e1;
+  }
+
+  .zoom-slider::-moz-range-thumb {
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid white;
+    border-radius: 9999px;
+    background: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+
   .app-shell {
     background-image: linear-gradient(
       to bottom,
@@ -350,6 +390,10 @@
 }
 
 @layer utilities {
+  html[data-line-spacing="relaxed"] main :where(p, li, span[class*="leading-"]) {
+    line-height: var(--line-height);
+  }
+
   .sr-only {
     position: absolute;
     width: 1px;
