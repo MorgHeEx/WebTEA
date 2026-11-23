@@ -193,19 +193,16 @@ function TrackLovedOneMain({ onBack, onSwitchTrack, onContact }: TrackLovedOnePr
             labelTone="teal"
           >
             <p className="max-w-prose">
-              Às vezes a primeira reação não é carinho - é um não cabe na boca. Isso também é humano.
+              Às vezes a primeira reação não é acolhimento, e sim um “não, isso não pode ser verdade”. Isso também é humano.
             </p>
 
             <div className="space-y-4 pt-2">
               <PhaseCard title="Por que a negação aparece" tone="amber">
                 <p className="max-w-prose">
-                  Muita gente cresce ouvindo ideias erradas sobre autismo. Diagnóstico pode mexer com
-                  medo de “rotular”, culpa de genitor, vergonha social ou sensação de perda do futuro
-                  imaginado.
+                  Muita gente cresce ouvindo ideias erradas sobre autismo. O diagnóstico pode despertar medo de “rotular”, culpa (principalmente em pais e mães), vergonha social ou a sensação de perder o futuro que se imaginava.
                 </p>
                 <p className="max-w-prose">
-                  Negação pode ser um jeito de ganhar tempo - só que, sem perceber, ela empurra a
-                  pessoa diagnosticada para se justificar sozinha.
+                  Negação pode ser um jeito de ganhar tempo, só que, sem perceber, ela empurra a pessoa diagnosticada para se justificar sozinha.
                 </p>
               </PhaseCard>
 

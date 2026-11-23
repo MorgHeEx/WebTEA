@@ -212,34 +212,27 @@ function TrackSelfMain({
             </p>
 
             <div className="space-y-4 pt-2">
-              <PhaseCard title="Se você entrou em “modo análise”" tone="amber">
+              <PhaseCard title="Se sua cabeça não para de buscar respostas" tone="amber">
                 <p className="max-w-prose">
-                  Pesquisar sem parar pode ser um jeito de buscar segurança. Faz sentido querer
-                  entender tudo de uma vez.
+                  Quando algo muda a forma como você se enxerga, a mente costuma correr atrás de explicações. Isso é compreensível e não quer dizer que há algo errado com você.
                 </p>
                 <p className="max-w-prose">
-                  Se isso está tirando sono, comida ou pausas, tente um combinado gentil: um bloco
-                  curto de leitura e depois uma pausa sensorial (água, banho, ar livre, tela para
-                  baixo).
+                  Se a busca começou a atrapalhar seu sono, sua alimentação ou suas pausas, vale fazer uma pausa. As informações continuam aqui, e você pode voltar amanhã.
                 </p>
                 <p className="max-w-prose">
-                  Você não está “exagerando”. Seu corpo pode estar pedindo freio, não mais
-                  informação.
+                  Uma ideia é escolher uma coisa por vez: ler só uma seção hoje e deixar o resto para outro dia.
                 </p>
               </PhaseCard>
 
-              <PhaseCard title="Se você sentiu alívio - e culpa por sentir alívio" tone="rose">
+              <PhaseCard title="Se o alívio veio misturado com tristeza ou culpa" tone="rose">
                 <p className="max-w-prose">
-                  Alívio costuma aparecer quando algo finalmente tem nome. Isso não apaga
-                  dificuldades, só deixa menos solitário carregar tudo sem explicação.
+                  Para muita gente, o diagnóstico explica anos de esforço e de se sentir diferente sem saber por quê. Sentir alívio com isso é natural.
                 </p>
                 <p className="max-w-prose">
-                  Culpa por aliviar não é “prova” de que você é egoísta. Muitas vezes é um hábito
-                  antigo de se diminuir.
+                  A culpa que vem junto pode ser um eco de muito tempo se cobrando além da conta. Ela não diz que você sentiu algo errado.
                 </p>
                 <p className="max-w-prose">
-                  Você pode honrar o alívio e, ao mesmo tempo, sentir tristeza - tudo pode caber
-                  aqui.
+                  Você pode ficar aliviado(a) pela explicação e ainda lamentar o que foi difícil. Um sentimento não cancela o outro.
                 </p>
               </PhaseCard>
             </div>
