@@ -87,16 +87,41 @@
 
   html[data-theme="dark"] [class*="bg-sky-50"],
   html[data-theme="dark"] [class*="bg-sky-100"],
-  html[data-theme="dark"] [class*="bg-blue-100"],
-  html[data-theme="dark"] [class*="bg-emerald-50"],
-  html[data-theme="dark"] [class*="bg-emerald-100"],
+  html[data-theme="dark"] [class*="bg-blue-100"] {
+    background-color: #1e3a5f !important;
+    color: #e2e8f0 !important;
+    border-color: #60a5fa !important;
+  }
+
   html[data-theme="dark"] [class*="bg-teal-50"],
-  html[data-theme="dark"] [class*="bg-teal-100"],
+  html[data-theme="dark"] [class*="bg-teal-100"] {
+    background-color: #134e4a !important;
+    color: #e2e8f0 !important;
+    border-color: #2dd4bf !important;
+  }
+
+  html[data-theme="dark"] [class*="bg-emerald-50"],
+  html[data-theme="dark"] [class*="bg-emerald-100"] {
+    background-color: #064e3b !important;
+    color: #e2e8f0 !important;
+    border-color: #34d399 !important;
+  }
+
+  html[data-theme="dark"] [class*="bg-rose-50"] {
+    background-color: #4c1d35 !important;
+    color: #e2e8f0 !important;
+    border-color: #fb7185 !important;
+  }
+
+  html[data-theme="dark"] [class*="bg-amber-50"] {
+    background-color: #78350f !important;
+    color: #e2e8f0 !important;
+    border-color: #fbbf24 !important;
+  }
+
   html[data-theme="dark"] [class*="bg-slate-50"],
   html[data-theme="dark"] [class*="bg-slate-100"],
-  html[data-theme="dark"] [class*="bg-slate-200"],
-  html[data-theme="dark"] [class*="bg-rose-50"],
-  html[data-theme="dark"] [class*="bg-amber-50"] {
+  html[data-theme="dark"] [class*="bg-slate-200"] {
     background-color: #334155 !important;
     color: #e2e8f0 !important;
     border-color: #475569 !important;
@@ -137,6 +162,80 @@
   html[data-theme="dark"] [class*="text-rose-"],
   html[data-theme="dark"] [class*="text-amber-"] {
     color: #bae6fd !important;
+  }
+
+  html[data-theme="dark"] .b-gate-option,
+  html[data-theme="dark"] .gate-option,
+  html[data-theme="dark"] .settings-option {
+    background-color: #334155 !important;
+    color: #e2e8f0 !important;
+    border-color: #64748b !important;
+  }
+
+  html[data-theme="dark"] .b-gate-option.selected,
+  html[data-theme="dark"] .gate-option.selected,
+  html[data-theme="dark"] .settings-option.selected {
+    background-color: #115e59 !important;
+    color: #f0fdfa !important;
+    border-color: #5eead4 !important;
+  }
+
+  html[data-theme="dark"] .gate-option.selected {
+    background-color: #075985 !important;
+    border-color: #7dd3fc !important;
+  }
+
+  html[data-theme="dark"] .b-gate-disabled,
+  html[data-theme="dark"] .gate-disabled {
+    background-color: #475569 !important;
+    color: #cbd5e1 !important;
+  }
+
+  html[data-theme="dark"] .b-gate-continue:disabled,
+  html[data-theme="dark"] .gate-continue:disabled {
+    background-color: #475569 !important;
+    color: #94a3b8 !important;
+  }
+
+  html[data-theme="dark"] .b-gate-continue:not(:disabled) {
+    background-color: #0f766e !important;
+    color: #ffffff !important;
+  }
+
+  html[data-theme="dark"] .gate-continue:not(:disabled) {
+    background-color: #0369a1 !important;
+    color: #ffffff !important;
+  }
+
+  html[data-theme="dark"] .toggle-track {
+    background-color: #475569 !important;
+  }
+
+  html[data-theme="dark"] .toggle-track[aria-checked="true"] {
+    background-color: #0369a1 !important;
+  }
+
+  html[data-theme="dark"] .toggle-thumb {
+    background-color: #f8fafc !important;
+  }
+
+  html[data-theme="dark"] .checklist-number,
+  html[data-theme="dark"] .process-step-number {
+    background-color: #475569 !important;
+    color: #f8fafc !important;
+    border-color: #94a3b8 !important;
+  }
+
+  html[data-theme="dark"] .toc-item-active {
+    background-color: #1e3a5f !important;
+    color: #bae6fd !important;
+    border-left-color: #7dd3fc !important;
+  }
+
+  html[data-theme="dark"] .toc-item-active.teal-active {
+    background-color: #134e4a !important;
+    color: #99f6e4 !important;
+    border-left-color: #5eead4 !important;
   }
 
   html[data-theme="light"] {

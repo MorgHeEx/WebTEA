@@ -16,8 +16,8 @@ export function TrackToc({ items, variant }: TrackTocProps) {
 
   const activeClass =
     variant === "self"
-      ? "border-sky-400 bg-sky-50 text-sky-900"
-      : "border-teal-400 bg-teal-50 text-teal-900";
+      ? "toc-item-active border-sky-400 bg-sky-50 text-sky-900"
+      : "toc-item-active teal-active border-teal-400 bg-teal-50 text-teal-900";
 
   function scrollTo(id: string) {
     const el = document.getElementById(id);

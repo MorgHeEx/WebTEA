@@ -93,9 +93,9 @@ export function TrackLovedOneGate({ onComplete }: TrackLovedOneGateProps) {
             <button
               type="button"
               onClick={() => setLevel(1)}
-              className={`min-h-[3.25rem] w-full rounded-2xl border-2 px-5 py-4 text-left text-base font-semibold leading-snug transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 sm:text-lg ${
+              className={`b-gate-option min-h-[3.25rem] w-full rounded-2xl border-2 px-5 py-4 text-left text-base font-semibold leading-snug transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 sm:text-lg ${
                 profile.level === 1
-                  ? "border-teal-500 bg-white shadow-md"
+                  ? "selected border-teal-500 bg-white shadow-md"
                   : "border-emerald-200 bg-white/80 hover:border-emerald-300"
               }`}
             >
@@ -104,9 +104,9 @@ export function TrackLovedOneGate({ onComplete }: TrackLovedOneGateProps) {
             <button
               type="button"
               onClick={() => setLevel(2)}
-              className={`min-h-[3.25rem] w-full rounded-2xl border-2 px-5 py-4 text-left text-base font-semibold leading-snug transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 sm:text-lg ${
+              className={`b-gate-option min-h-[3.25rem] w-full rounded-2xl border-2 px-5 py-4 text-left text-base font-semibold leading-snug transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 sm:text-lg ${
                 profile.level === 2
-                  ? "border-teal-500 bg-white shadow-md"
+                  ? "selected border-teal-500 bg-white shadow-md"
                   : "border-emerald-200 bg-white/80 hover:border-emerald-300"
               }`}
             >
@@ -122,7 +122,7 @@ export function TrackLovedOneGate({ onComplete }: TrackLovedOneGateProps) {
                 disabled
                 aria-disabled="true"
                 title="Estamos preparando conteúdo específico para o nível 3"
-                className="w-full cursor-not-allowed rounded-xl border border-slate-200 bg-slate-100/80 px-4 py-3 text-left text-base font-semibold text-slate-500"
+                className="b-gate-disabled w-full cursor-not-allowed rounded-xl border border-slate-200 bg-slate-100/80 px-4 py-3 text-left text-base font-semibold text-slate-500"
               >
                 Nível 3 – Em breve
               </button>
@@ -148,9 +148,9 @@ export function TrackLovedOneGate({ onComplete }: TrackLovedOneGateProps) {
                 key={rel}
                 type="button"
                 onClick={() => setRelation(rel)}
-                className={`min-h-[2.75rem] rounded-xl border-2 px-3 py-2.5 text-left text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 sm:text-base ${
+                className={`b-gate-option min-h-[2.75rem] rounded-xl border-2 px-3 py-2.5 text-left text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 sm:text-base ${
                   profile.relation === rel
-                    ? "border-teal-500 bg-white shadow-sm"
+                    ? "selected border-teal-500 bg-white shadow-sm"
                     : "border-emerald-200/90 bg-white/70 hover:border-emerald-300"
                 }`}
               >
@@ -189,7 +189,7 @@ export function TrackLovedOneGate({ onComplete }: TrackLovedOneGateProps) {
             type="button"
             onClick={handleContinue}
             disabled={!canContinue}
-            className="min-h-[3rem] min-w-[12rem] rounded-2xl bg-teal-700 px-8 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-teal-800 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-800"
+            className="b-gate-continue min-h-[3rem] min-w-[12rem] rounded-2xl bg-teal-700 px-8 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-teal-800 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-800"
           >
             Continuar
           </button>

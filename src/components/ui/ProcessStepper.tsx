@@ -16,7 +16,7 @@ export function ProcessStepper({ steps, accent = "sky" }: ProcessStepperProps) {
       {steps.map((step, index) => (
         <li key={index} className="flex gap-3">
           <span
-            className={`mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 text-sm font-bold ${bullet}`}
+            className={`process-step-number mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 text-sm font-bold ${bullet}`}
             aria-hidden
           >
             {index + 1}

@@ -72,7 +72,7 @@ export function InteractiveChecklist({
                 <CheckIcon done={isDone} />
                 <span className="flex min-w-0 flex-1 flex-col gap-2">
                   <span className="flex flex-wrap items-baseline gap-2">
-                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-100 text-sm font-semibold text-slate-700">
+                    <span className="checklist-number flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-100 text-sm font-semibold text-slate-700">
                       {index + 1}
                     </span>
                     <span className="font-medium text-slate-900">{item.title}</span>

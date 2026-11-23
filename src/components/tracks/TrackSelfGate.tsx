@@ -64,9 +64,9 @@ export function TrackSelfGate({ onComplete }: TrackSelfGateProps) {
             <button
               type="button"
               onClick={() => setLevel(1)}
-              className={`min-h-[3.25rem] w-full rounded-2xl border-2 px-5 py-4 text-left text-base font-semibold leading-snug transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 sm:text-lg ${
+              className={`gate-option min-h-[3.25rem] w-full rounded-2xl border-2 px-5 py-4 text-left text-base font-semibold leading-snug transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 sm:text-lg ${
                 profile.level === 1
-                  ? "border-sky-500 bg-white shadow-md"
+                  ? "selected border-sky-500 bg-white shadow-md"
                   : "border-sky-200 bg-white/80 hover:border-sky-300"
               }`}
             >
@@ -75,9 +75,9 @@ export function TrackSelfGate({ onComplete }: TrackSelfGateProps) {
             <button
               type="button"
               onClick={() => setLevel(2)}
-              className={`min-h-[3.25rem] w-full rounded-2xl border-2 px-5 py-4 text-left text-base font-semibold leading-snug transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 sm:text-lg ${
+              className={`gate-option min-h-[3.25rem] w-full rounded-2xl border-2 px-5 py-4 text-left text-base font-semibold leading-snug transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 sm:text-lg ${
                 profile.level === 2
-                  ? "border-sky-500 bg-white shadow-md"
+                  ? "selected border-sky-500 bg-white shadow-md"
                   : "border-sky-200 bg-white/80 hover:border-sky-300"
               }`}
             >
@@ -93,7 +93,7 @@ export function TrackSelfGate({ onComplete }: TrackSelfGateProps) {
                 disabled
                 aria-disabled="true"
                 title="Estamos preparando conteúdo específico para o nível 3"
-                className="w-full cursor-not-allowed rounded-xl border border-slate-200 bg-slate-100/80 px-4 py-3 text-left text-base font-semibold text-slate-500"
+                className="gate-disabled w-full cursor-not-allowed rounded-xl border border-slate-200 bg-slate-100/80 px-4 py-3 text-left text-base font-semibold text-slate-500"
               >
                 Nível 3 – Em breve
               </button>
@@ -118,7 +118,7 @@ export function TrackSelfGate({ onComplete }: TrackSelfGateProps) {
             type="button"
             onClick={handleContinue}
             disabled={!canContinue}
-            className="min-h-[3rem] min-w-[12rem] rounded-2xl bg-sky-600 px-8 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-sky-700 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700"
+            className="gate-continue min-h-[3rem] min-w-[12rem] rounded-2xl bg-sky-600 px-8 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-sky-700 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:text-slate-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700"
           >
             Continuar
           </button>

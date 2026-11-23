@@ -83,12 +83,12 @@ function Toggle({
         role="switch"
         aria-checked={checked}
         onClick={() => onChange(!checked)}
-        className={`relative mt-0.5 h-7 w-12 shrink-0 rounded-full transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${
+        className={`toggle-track relative mt-0.5 h-7 w-12 shrink-0 rounded-full transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${
           checked ? "bg-sky-500" : "bg-slate-300"
         }`}
       >
         <span
-          className={`absolute top-0.5 left-0.5 h-6 w-6 rounded-full bg-white shadow transition-transform ${
+          className={`toggle-thumb absolute top-0.5 left-0.5 h-6 w-6 rounded-full bg-white shadow transition-transform ${
             checked ? "translate-x-5" : "translate-x-0"
           }`}
         />
@@ -182,9 +182,9 @@ export function DisplaySettingsPanel({
                     role="radio"
                     aria-checked={selected}
                     onClick={() => onUpdate({ theme: t.id })}
-                    className={`rounded-xl border px-3 py-2.5 text-left transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${
+                    className={`settings-option rounded-xl border px-3 py-2.5 text-left transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${
                       selected
-                        ? "border-sky-400 bg-sky-50"
+                        ? "selected border-sky-400 bg-sky-50"
                         : "border-slate-200 bg-white hover:bg-slate-50"
                     }`}
                   >
@@ -208,9 +208,9 @@ export function DisplaySettingsPanel({
                     key={f.id}
                     type="button"
                     onClick={() => onUpdate({ fontSize: f.id })}
-                    className={`rounded-lg border px-2.5 py-1.5 text-xs font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${
+                    className={`settings-option rounded-lg border px-2.5 py-1.5 text-xs font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${
                       selected
-                        ? "border-sky-400 bg-sky-50 text-sky-900"
+                        ? "selected border-sky-400 bg-sky-50 text-sky-900"
                         : "border-slate-200 text-slate-700 hover:bg-slate-50"
                     }`}
                   >
@@ -234,9 +234,9 @@ export function DisplaySettingsPanel({
                     key={opt.id}
                     type="button"
                     onClick={() => onUpdate({ lineSpacing: opt.id })}
-                    className={`flex-1 rounded-lg border px-2 py-1.5 text-xs font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${
+                    className={`settings-option flex-1 rounded-lg border px-2 py-1.5 text-xs font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${
                       selected
-                        ? "border-sky-400 bg-sky-50 text-sky-900"
+                        ? "selected border-sky-400 bg-sky-50 text-sky-900"
                         : "border-slate-200 text-slate-700 hover:bg-slate-50"
                     }`}
                   >
@@ -261,9 +261,9 @@ export function DisplaySettingsPanel({
                     role="radio"
                     aria-checked={selected}
                     onClick={() => onUpdate({ fontFamily: f.id })}
-                    className={`rounded-xl border px-3 py-2.5 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${
+                    className={`settings-option rounded-xl border px-3 py-2.5 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${
                       selected
-                        ? "border-sky-400 bg-sky-50"
+                        ? "selected border-sky-400 bg-sky-50"
                         : "border-slate-200 bg-white hover:bg-slate-50"
                     }`}
                   >
