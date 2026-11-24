@@ -79,7 +79,7 @@ export function CarteiraTeaAmapaSection({
       <div className="mt-6 space-y-6">
         <div>
           <p className="text-sm font-semibold text-slate-900">Documentos necessários</p>
-          <p className="mt-1 max-w-prose text-sm text-slate-600">Marque o que já separou - salvamos neste aparelho.</p>
+          <p className="mt-1 max-w-prose text-sm text-slate-600">Marque o que já separou. Guardamos seu progresso neste aparelho.</p>
           <div className="mt-4 space-y-5">
             <DocumentCheckboxList
               title="Documentos da pessoa com TEA"
@@ -100,7 +100,7 @@ export function CarteiraTeaAmapaSection({
 
         <PhaseCard title="Importante sobre originais" tone="mint">
           <p className="max-w-prose text-sm leading-relaxed text-slate-800">
-            Leve apenas os documentos originais - não é necessário tirar cópia. Tudo é digitalizado
+            Leve apenas os documentos originais. Não é necessário tirar cópia. Tudo é digitalizado
             e enviado pelo sistema CADTEA para validação.
           </p>
         </PhaseCard>
@@ -116,11 +116,11 @@ export function CarteiraTeaAmapaSection({
           <p className="text-sm font-semibold text-slate-900">Unidades que emitem a carteira</p>
           <p className="mt-2 text-sm font-medium text-slate-800">Macapá</p>
           <ul className="mt-2 space-y-2 text-sm leading-relaxed text-slate-700">
-            <li>Super Fácil Centro: Rua Cândido Mendes, 448 – Centro</li>
-            <li>Super Fácil Zona Sul: Rua Claudomiro de Moraes, s/n – Novo Buritizal</li>
-            <li>Super Fácil Zona Norte: Rodovia 156, nº 891 – São Lázaro</li>
-            <li>Super Fácil Beirol: Rua Jovino Dinoá, s/nº – Beirol</li>
-            <li>Super Fácil Zona Oeste: Rodovia Duca Serra, Km 3, nº 887 – Cabralzinho</li>
+            <li>Super Fácil Centro: Rua Cândido Mendes, 448, Centro</li>
+            <li>Super Fácil Zona Sul: Rua Claudomiro de Moraes, s/n, Novo Buritizal</li>
+            <li>Super Fácil Zona Norte: Rodovia 156, nº 891, São Lázaro</li>
+            <li>Super Fácil Beirol: Rua Jovino Dinoá, s/nº, Beirol</li>
+            <li>Super Fácil Zona Oeste: Rodovia Duca Serra, Km 3, nº 887, Cabralzinho</li>
           </ul>
           <p className="mt-4 text-sm font-medium text-slate-800">Outros municípios com endereço confirmado</p>
           <ul className="mt-2 space-y-2 text-sm leading-relaxed text-slate-700">

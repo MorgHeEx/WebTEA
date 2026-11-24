@@ -4,17 +4,23 @@ import { ContentSection } from "../ui/ContentSection";
 import { PhaseCard } from "../ui/PhaseCard";
 
 type Props = {
+  index: number;
   getChecklist: (id: string) => boolean[];
   setChecklistItem: (id: string, index: number, checked: boolean) => void;
 };
 
-export function TrackLovedOneResponsaveisExtra({ getChecklist, setChecklistItem }: Props) {
+export function TrackLovedOneResponsaveisExtra({
+  index,
+  getChecklist,
+  setChecklistItem,
+}: Props) {
   return (
     <ContentSection
       id="loved-responsaveis"
-      index={7}
+      index={index}
       title="Orientações para responsáveis"
       labelTone="teal"
+      collapsible={false}
     >
       <p className="max-w-prose text-sm leading-relaxed text-slate-600">
         Conteúdo extra porque você indicou ser responsável pelo cuidado.
@@ -24,7 +30,7 @@ export function TrackLovedOneResponsaveisExtra({ getChecklist, setChecklistItem 
         <div>
           <h3 className="text-lg font-semibold text-slate-900">1. Profissionais para buscar</h3>
           <p className="mt-2 max-w-prose text-sm leading-relaxed text-slate-700">
-            Estes passos são os mesmos sugeridos na trilha da pessoa diagnosticada - aqui adaptados
+            Estes passos são os mesmos sugeridos na trilha da pessoa diagnosticada. Aqui, adaptamos
             para o cuidado do seu dependente.
           </p>
           <ul className="mt-4 list-disc space-y-3 pl-5 text-sm leading-relaxed text-slate-700 md:text-base">
@@ -43,7 +49,7 @@ export function TrackLovedOneResponsaveisExtra({ getChecklist, setChecklistItem 
             </li>
             <li>
               <strong className="text-slate-900">Comunidades:</strong> o pertencimento ajuda a
-              regular ansiedade - busque grupos focados em neurodivergência e respeito à pessoa
+              regular a ansiedade. Busque grupos focados em neurodivergência e respeito à pessoa
               autista, sempre com moderação e segurança emocional.
             </li>
           </ul>
@@ -57,7 +63,7 @@ export function TrackLovedOneResponsaveisExtra({ getChecklist, setChecklistItem 
           <div className="mt-4">
             <AmapaDireitosSection
               title="Direitos no Amapá (pessoa sob seus cuidados)"
-              intro="Resumo para orientar buscas por apoio formal - confirme sempre com profissionais e órgãos oficiais."
+              intro="Resumo para orientar buscas por apoio formal. Confirme sempre com profissionais e órgãos oficiais."
             />
           </div>
         </div>

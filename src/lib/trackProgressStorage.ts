@@ -68,6 +68,14 @@ export function saveProgress(track: TrackId, state: TrackProgressState): void {
   }
 }
 
+export function resetProgress(track: TrackId): void {
+  try {
+    localStorage.removeItem(keyFor(track));
+  } catch {
+    /* ignore */
+  }
+}
+
 export const SECTION_IDS = {
   self: [
     "self-s1",

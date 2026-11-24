@@ -11,6 +11,7 @@ type HubCard = {
 type TrackExploreHubProps = {
   variant: "self" | "loved";
   cards: HubCard[];
+  intro?: string;
 };
 
 function scrollToId(id: string) {
@@ -33,30 +34,30 @@ export function makeAnchorCard(
   };
 }
 
-export function TrackExploreHub({ variant, cards }: TrackExploreHubProps) {
+export function TrackExploreHub({ variant, cards, intro }: TrackExploreHubProps) {
   const accent =
     variant === "self"
-      ? "border-sky-200 hover:border-sky-300 hover:bg-sky-50/60 focus-visible:outline-sky-600"
-      : "border-emerald-200 hover:border-emerald-300 hover:bg-emerald-50/50 focus-visible:outline-emerald-700";
+      ? "border-orange-200 hover:border-orange-400 hover:bg-orange-50/60 focus-visible:outline-[#9a3b20]"
+      : "border-rose-200 hover:border-rose-400 hover:bg-rose-50/60 focus-visible:outline-[#8d3348]";
 
   return (
     <div className="space-y-5">
-      <p className="max-w-prose text-slate-600">
-        Você percorreu as seções desta trilha. Escolha o próximo passo no seu ritmo.
+      <p className="reading-surface max-w-[65ch] rounded-xl px-4 py-3 text-base leading-[1.7] text-stone-600 shadow-sm">
+        {intro ?? "Você percorreu as seções desta trilha. Escolha o próximo passo no seu ritmo."}
       </p>
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+      <div className="grid grid-cols-1 gap-3 lg:grid-cols-2 lg:gap-4">
         {cards.map((card) => (
           <button
             key={card.id}
             type="button"
             onClick={card.onClick}
-            className={`flex min-h-[7.5rem] flex-col items-start gap-2 rounded-2xl border-2 bg-white/95 p-4 text-left shadow-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${accent}`}
+            className={`explore-card flex min-h-12 flex-col items-start gap-2 rounded-2xl border-2 bg-[#fffcf7]/95 p-4 text-left shadow-sm transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${accent}`}
           >
-            <span className="text-slate-500" aria-hidden>
+            <span className="text-stone-600" aria-hidden>
               {card.icon}
             </span>
-            <span className="text-base font-semibold text-slate-900">{card.title}</span>
-            <span className="text-sm leading-snug text-slate-600">{card.description}</span>
+            <span className="text-lg font-bold text-stone-800">{card.title}</span>
+            <span className="text-base leading-[1.5] text-stone-600">{card.description}</span>
           </button>
         ))}
       </div>

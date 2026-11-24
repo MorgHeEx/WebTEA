@@ -11,7 +11,6 @@ export type DisplaySettings = {
   fontFamily: FontFamilyId;
   reduceMotion: boolean;
   highlightLinks: boolean;
-  extraSpacing: boolean;
   focusMode: boolean;
   zoom: number;
 };
@@ -19,9 +18,9 @@ export type DisplaySettings = {
 export const DISPLAY_SETTINGS_KEY = "webtea-display-settings-v1";
 
 export const FONT_SIZE_PX: Record<FontSizeId, number> = {
-  sm: 14,
-  md: 16,
-  lg: 18,
+  sm: 16,
+  md: 18,
+  lg: 20,
   xl: 22,
 };
 
@@ -33,7 +32,6 @@ export const DEFAULT_DISPLAY_SETTINGS: DisplaySettings = {
   fontFamily: "nunito",
   reduceMotion: false,
   highlightLinks: false,
-  extraSpacing: false,
   focusMode: false,
   zoom: 100,
 };
@@ -72,7 +70,6 @@ export function loadDisplaySettings(): DisplaySettings {
           : "nunito",
       reduceMotion: Boolean(parsed.reduceMotion),
       highlightLinks: Boolean(parsed.highlightLinks),
-      extraSpacing: Boolean(parsed.extraSpacing),
       focusMode: Boolean(parsed.focusMode),
       zoom: clampZoom(typeof parsed.zoom === "number" ? parsed.zoom : 100),
     };
@@ -132,7 +129,7 @@ export function applyDisplaySettings(settings: DisplaySettings): void {
   root.style.setProperty("--base-font-size", `${FONT_SIZE_PX[settings.fontSize]}px`);
   root.style.setProperty(
     "--line-height",
-    settings.lineSpacing === "relaxed" ? "2" : "1.6",
+    settings.lineSpacing === "relaxed" ? "2" : "1.7",
   );
   root.style.setProperty("--font-family", FONT_CSS[settings.fontFamily]);
   root.style.setProperty("--page-zoom", String(settings.zoom / 100));
@@ -141,6 +138,5 @@ export function applyDisplaySettings(settings: DisplaySettings): void {
   root.dataset.lineSpacing = settings.lineSpacing;
   root.dataset.reduceMotion = settings.reduceMotion ? "true" : "false";
   root.dataset.highlightLinks = settings.highlightLinks ? "true" : "false";
-  root.dataset.extraSpacing = settings.extraSpacing ? "true" : "false";
   root.dataset.focusMode = settings.focusMode ? "true" : "false";
 }

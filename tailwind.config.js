@@ -15,9 +15,11 @@ export default {
       },
       colors: {
         tea: {
-          sky: "#e8f4fc",
-          mint: "#e6f5f0",
-          card: "#fafcfd",
+          sky: "#ffedd5",
+          mint: "#ffe4e6",
+          card: "#fffcf7",
+          terracotta: "#b4532a",
+          mauve: "#9a3b52",
         },
       },
     },

@@ -84,10 +84,10 @@ export const ContentSection = forwardRef<HTMLElement, ContentSectionProps>(
         ref={ref}
         id={id}
         aria-labelledby={`${id}-heading`}
-        className={`rounded-2xl border bg-white/90 shadow-sm ${
+        className={`book-page max-w-[65ch] rounded-2xl border bg-[#fffcf7]/95 shadow-sm ${
           isViewed
             ? "border-emerald-200/90 ring-1 ring-emerald-100"
-            : "border-slate-200/80"
+            : "border-amber-200/70"
         }`}
       >
         {collapsible ? (
@@ -101,7 +101,9 @@ export const ContentSection = forwardRef<HTMLElement, ContentSectionProps>(
             >
               <span className="min-w-0 flex-1">
                 <span className="mb-2 flex flex-wrap items-center gap-2">
-                  <span className={`text-sm font-medium ${labelClass}`}>Seção {index}</span>
+                  <span className={`text-xs font-bold uppercase tracking-[0.12em] ${labelClass}`}>
+                    Capítulo {index}
+                  </span>
                   {isViewed ? (
                     <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-medium text-emerald-900">
                       Você já visitou esta parte
@@ -118,7 +120,9 @@ export const ContentSection = forwardRef<HTMLElement, ContentSectionProps>(
         ) : (
           <div className="px-6 pt-6 md:px-8 md:pt-8">
             <div className="mb-2 flex flex-wrap items-center gap-2">
-              <p className={`text-sm font-medium ${labelClass}`}>Seção {index}</p>
+              <p className={`text-xs font-bold uppercase tracking-[0.12em] ${labelClass}`}>
+                Capítulo {index}
+              </p>
               {isViewed ? (
                 <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-medium text-emerald-900">
                   Você já visitou esta parte
@@ -143,7 +147,7 @@ export const ContentSection = forwardRef<HTMLElement, ContentSectionProps>(
           className="overflow-hidden transition-[max-height] duration-300 ease-out motion-reduce:transition-none"
           style={collapsible ? { maxHeight: open ? "5000px" : "0px" } : undefined}
         >
-          <div className="space-y-4 px-6 pb-6 text-base leading-relaxed text-slate-700 md:px-8 md:pb-8 md:text-lg [&_p]:max-w-prose">
+          <div className="space-y-5 px-6 pb-6 text-lg leading-[1.7] text-stone-700 md:px-8 md:pb-8 [&_p]:max-w-[65ch]">
             {children}
           </div>
         </div>

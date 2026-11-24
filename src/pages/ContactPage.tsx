@@ -13,7 +13,7 @@ export function ContactPage({ onBack }: ContactPageProps) {
         Voltar
       </button>
 
-      <article className="space-y-10 text-slate-800">
+      <article className="reading-surface space-y-10 rounded-2xl p-6 text-slate-800 shadow-sm sm:p-8">
         <section>
           <h1 className="text-2xl font-semibold text-slate-900">Sobre este projeto</h1>
           <p className="mt-3 text-base leading-relaxed">

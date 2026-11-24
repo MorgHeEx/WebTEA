@@ -5,6 +5,18 @@ function RightCard({ title, law }: { title: string; law: string }) {
     <li className="rounded-xl border border-slate-200/90 bg-gradient-to-br from-white to-sky-50/40 px-4 py-3 shadow-sm">
       <p className="font-medium text-slate-900">{title}</p>
       <p className="mt-1 text-xs font-medium uppercase tracking-wide text-sky-800/90">{law}</p>
+      <details className="mt-3 border-t border-slate-200 pt-2">
+        <summary className="min-h-12 cursor-pointer py-3 text-sm font-semibold text-sky-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-700">
+          O que essa lei garante na prática
+        </summary>
+        <p className="pb-2 text-sm leading-relaxed text-slate-700">
+          {law === "Lei Federal 12.764/2012"
+            ? "A Lei Berenice Piana reconhece a pessoa autista como pessoa com deficiência para efeitos legais e institui direitos a cuidado integral. Na escola regular, prevê acompanhante especializado quando houver necessidade comprovada."
+            : law === "Lei Federal Romeo Mion 13.977/2020"
+              ? "A Lei Romeo Mion criou a Carteira de Identificação da Pessoa com Transtorno do Espectro Autista (Ciptea), que ajuda a identificar a pessoa e facilitar a prioridade de atendimento."
+              : `Esta norma serve de referência para solicitar ${title.toLowerCase()}. A aplicação pode depender de critérios, documentos e procedimentos do órgão responsável. Confirme como pedir antes de tomar decisões.`}
+        </p>
+      </details>
     </li>
   );
 }
@@ -14,15 +26,26 @@ function RightCardEmerald({ title, law }: { title: string; law: string }) {
     <li className="rounded-xl border border-emerald-200/80 bg-gradient-to-br from-white to-emerald-50/35 px-4 py-3 shadow-sm">
       <p className="font-medium text-slate-900">{title}</p>
       <p className="mt-1 text-xs font-medium uppercase tracking-wide text-teal-800/90">{law}</p>
+      <details className="mt-3 border-t border-emerald-200 pt-2">
+        <summary className="min-h-12 cursor-pointer py-3 text-sm font-semibold text-teal-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700">
+          O que essa lei garante na prática
+        </summary>
+        <p className="pb-2 text-sm leading-relaxed text-slate-700">
+          Esta norma estadual serve de referência para solicitar {title.toLowerCase()} no Amapá.
+          A aplicação pode depender de critérios, documentos e procedimentos do órgão responsável.
+          Confirme como pedir antes de tomar decisões.
+        </p>
+      </details>
     </li>
   );
 }
 
 const FEDERAL: { title: string; law: string }[] = [
   { title: "Atendimento preferencial em qualquer fila", law: "Lei Federal 14.626/2023" },
-  { title: "Direito a estudar em escola pública ou privada", law: "Lei Federal 1.874/2015" },
+  { title: "Direito a estudar em escola pública ou privada", law: "Lei Federal 13.146/2015" },
   { title: "Professor auxiliar garantido", law: "Lei Federal 12.764/2012" },
-  { title: "Plano de saúde não pode exigir carência por TEA", law: "Lei Federal 4.788/2020" },
+  { title: "Carteira de Identificação da Pessoa com TEA (Ciptea)", law: "Lei Federal Romeo Mion 13.977/2020" },
+  { title: "Cobertura de terapias segundo regras do plano e da ANS", law: "Lei Federal 9.656/1998 e Resolução ANS 539/2022" },
   { title: "Terapias ilimitadas pelo plano de saúde", law: "Resolução ANS 539/2022" },
   { title: "Acesso ao BPC/LOAS no INSS", law: "Lei 8.742/1993" },
   { title: "Isenção ou redução na conta de energia elétrica", law: "Resolução ANEEL 1.000/2021" },
@@ -40,7 +63,7 @@ const ESTADUAL: { title: string; law: string }[] = [
   },
   {
     title:
-      "Proteção legal como pessoa com condição oculta - Cordão Girassol disponível no Super Fácil",
+      "Proteção legal como pessoa com condição oculta. Cordão Girassol disponível no Super Fácil",
     law: "Lei Estadual 3.240/2025",
   },
 ];
@@ -52,7 +75,7 @@ type AmapaDireitosSectionProps = {
 
 export function AmapaDireitosSection({
   title,
-  intro = "Um mapa enxuto do que costuma existir por lei - confirme detalhes com profissionais e órgãos oficiais.",
+  intro = "Um mapa enxuto do que costuma existir por lei. Confirme os detalhes com profissionais e órgãos oficiais.",
 }: AmapaDireitosSectionProps) {
   return (
     <div className="space-y-8">
@@ -79,7 +102,7 @@ export function AmapaDireitosSection({
 
       <PhaseCard title="Apoio e denúncia" tone="sky">
         <p className="max-w-prose text-sm leading-relaxed text-slate-700">
-          <strong className="text-slate-900">AMA-AP</strong> - Associação de Pais e Amigos Autistas
+          <strong className="text-slate-900">AMA-AP:</strong> Associação de Pais e Amigos Autistas
           do Amapá.
         </p>
         <p className="max-w-prose text-sm leading-relaxed text-slate-700">
@@ -93,7 +116,7 @@ export function AmapaDireitosSection({
             @amaaptea
           </a>
           <br />
-          Av. Jose Maria Gonçalves Leão, 398 – Fazendinha, Macapá.
+          Av. Jose Maria Gonçalves Leão, 398, Fazendinha, Macapá.
         </p>
         <p className="max-w-prose text-sm leading-relaxed text-slate-700">
           <strong className="text-slate-900">Ministério Público do Amapá</strong> em caso de

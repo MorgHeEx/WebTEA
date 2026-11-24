@@ -10,10 +10,10 @@ type DisplaySettingsPanelProps = {
 };
 
 const THEMES: { id: ThemeId; label: string; hint: string }[] = [
-  { id: "default", label: "🌸 Padrão", hint: "Azul claro e verde menta" },
-  { id: "dark", label: "🌙 Escuro", hint: "Fundo escuro, textos claros" },
-  { id: "light", label: "☀️ Claro Neutro", hint: "Branco puro, minimalista" },
-  { id: "contrast", label: "⚡ Alto Contraste", hint: "Preto, branco e amarelo" },
+  { id: "default", label: "Claro", hint: "Tons suaves de pêssego e creme" },
+  { id: "dark", label: "Escuro", hint: "Cacau quente e textos claros" },
+  { id: "light", label: "Claro neutro", hint: "Cores frias e fundo branco sem animação" },
+  { id: "contrast", label: "Alto contraste", hint: "Preto, branco e amarelo" },
 ];
 
 const FONT_SIZES: { id: FontSizeId; label: string }[] = [
@@ -32,7 +32,7 @@ const FONTS: { id: FontFamilyId; label: string; hint: string }[] = [
   },
   {
     id: "opendyslexic",
-    label: "Dislexia (OpenDyslexic)",
+    label: "Fonte OpenDyslexic",
     hint: "Projetada para pessoas com dislexia",
   },
 ];
@@ -68,7 +68,7 @@ function Toggle({
 }) {
   const id = useId();
   return (
-    <div className="flex items-start justify-between gap-3 py-2">
+    <div className="flex min-h-12 items-center justify-between gap-3 py-2">
       <div className="min-w-0">
         <label htmlFor={id} className="text-sm font-medium text-slate-800">
           {label}
@@ -83,13 +83,13 @@ function Toggle({
         role="switch"
         aria-checked={checked}
         onClick={() => onChange(!checked)}
-        className={`toggle-track relative mt-0.5 h-7 w-12 shrink-0 rounded-full transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${
+        className={`toggle-track relative min-h-12 min-w-12 shrink-0 rounded-full transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9a3b52] ${
           checked ? "bg-sky-500" : "bg-slate-300"
         }`}
       >
         <span
-          className={`toggle-thumb absolute top-0.5 left-0.5 h-6 w-6 rounded-full bg-white shadow transition-transform ${
-            checked ? "translate-x-5" : "translate-x-0"
+          className={`toggle-thumb absolute left-1 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full bg-white shadow transition-transform ${
+            checked ? "translate-x-4" : "translate-x-0"
           }`}
         />
       </button>
@@ -97,13 +97,20 @@ function Toggle({
   );
 }
 
-export function DisplaySettingsTrigger({ onOpen }: { onOpen: () => void }) {
+export function DisplaySettingsTrigger({
+  onOpen,
+  disabled = false,
+}: {
+  onOpen: () => void;
+  disabled?: boolean;
+}) {
   return (
     <button
       type="button"
       onClick={onOpen}
+      disabled={disabled}
       aria-label="Abrir configurações de exibição"
-      className="settings-trigger fixed right-4 top-4 z-[90] flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-md hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+      className="settings-trigger fixed right-4 top-4 z-[90] flex min-h-12 min-w-12 items-center justify-center rounded-xl border border-amber-200/80 bg-[#fffcf7] text-stone-700 shadow-md hover:bg-amber-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9a3b52]"
     >
       <GearIcon />
     </button>
@@ -150,10 +157,10 @@ export function DisplaySettingsPanel({
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="settings-panel absolute right-0 top-0 flex h-dvh w-[min(300px,100vw)] flex-col border-l border-slate-200 bg-white shadow-xl animate-slide-in-right"
+        className="settings-panel absolute right-0 top-0 flex h-dvh w-[min(360px,100vw)] flex-col border-l border-amber-200/70 bg-[#fffcf7] shadow-xl animate-slide-in-right"
       >
-        <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3">
-          <h2 id={titleId} className="text-base font-semibold text-slate-900">
+        <div className="flex items-center justify-between border-b border-stone-300 px-4 py-3">
+          <h2 id={titleId} className="text-lg font-bold text-stone-800">
             Configurações de exibição
           </h2>
           <button
@@ -161,7 +168,7 @@ export function DisplaySettingsPanel({
             type="button"
             onClick={onClose}
             aria-label="Fechar painel"
-            className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-600 hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+            className="flex min-h-12 min-w-12 items-center justify-center rounded-lg text-stone-600 hover:bg-amber-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9a3b52]"
           >
             <span aria-hidden className="text-xl leading-none">
               ×
@@ -169,9 +176,9 @@ export function DisplaySettingsPanel({
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto px-4 py-4 text-slate-800">
+        <div className="flex-1 overflow-y-auto px-4 py-4 text-stone-800">
           <section className="pb-4">
-            <h3 className="mb-3 text-sm font-semibold text-slate-900">Aparência</h3>
+            <h3 className="mb-3 text-base font-bold text-stone-800">Tema</h3>
             <div className="grid gap-2" role="radiogroup" aria-label="Tema">
               {THEMES.map((t) => {
                 const selected = settings.theme === t.id;
@@ -182,24 +189,24 @@ export function DisplaySettingsPanel({
                     role="radio"
                     aria-checked={selected}
                     onClick={() => onUpdate({ theme: t.id })}
-                    className={`settings-option rounded-xl border px-3 py-2.5 text-left transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${
+                    className={`settings-option min-h-12 rounded-xl border px-3 py-2.5 text-left transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9a3b52] ${
                       selected
-                        ? "selected border-sky-400 bg-sky-50"
-                        : "border-slate-200 bg-white hover:bg-slate-50"
+                        ? "selected border-amber-700 bg-amber-100 text-stone-900"
+                        : "border-stone-300 bg-[#fffcf7] hover:bg-amber-50"
                     }`}
                   >
-                    <span className="block text-sm font-medium">{t.label}</span>
-                    <span className="mt-0.5 block text-xs text-slate-500">{t.hint}</span>
+                    <span className="block text-base font-bold">{t.label}</span>
+                    <span className="mt-0.5 block text-sm text-stone-600">{t.hint}</span>
                   </button>
                 );
               })}
             </div>
           </section>
 
-          <hr className="border-slate-200" />
+          <hr className="border-stone-300" />
 
           <section className="py-4">
-            <h3 className="mb-3 text-sm font-semibold text-slate-900">Tamanho do texto</h3>
+            <h3 className="mb-3 text-base font-bold text-stone-800">Tamanho da fonte</h3>
             <div className="flex flex-wrap gap-2" role="group" aria-label="Tamanho da fonte">
               {FONT_SIZES.map((f) => {
                 const selected = settings.fontSize === f.id;
@@ -208,10 +215,10 @@ export function DisplaySettingsPanel({
                     key={f.id}
                     type="button"
                     onClick={() => onUpdate({ fontSize: f.id })}
-                    className={`settings-option rounded-lg border px-2.5 py-1.5 text-xs font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${
+                    className={`settings-option min-h-12 rounded-lg border px-3 py-2 text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9a3b52] ${
                       selected
-                        ? "selected border-sky-400 bg-sky-50 text-sky-900"
-                        : "border-slate-200 text-slate-700 hover:bg-slate-50"
+                        ? "selected border-amber-700 bg-amber-100 text-stone-900"
+                        : "border-stone-300 text-stone-700 hover:bg-amber-50"
                     }`}
                   >
                     {f.label}
@@ -220,7 +227,7 @@ export function DisplaySettingsPanel({
               })}
             </div>
 
-            <p className="mb-2 mt-4 text-xs font-medium text-slate-700">Espaçamento entre linhas</p>
+            <p className="mb-2 mt-4 text-base font-semibold text-stone-700">Espaçamento entre linhas</p>
             <div className="flex gap-2" role="group" aria-label="Espaçamento entre linhas">
               {(
                 [
@@ -234,10 +241,10 @@ export function DisplaySettingsPanel({
                     key={opt.id}
                     type="button"
                     onClick={() => onUpdate({ lineSpacing: opt.id })}
-                    className={`settings-option flex-1 rounded-lg border px-2 py-1.5 text-xs font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${
+                    className={`settings-option flex min-h-12 flex-1 items-center justify-center rounded-lg border px-2 py-2 text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9a3b52] ${
                       selected
-                        ? "selected border-sky-400 bg-sky-50 text-sky-900"
-                        : "border-slate-200 text-slate-700 hover:bg-slate-50"
+                        ? "selected border-amber-700 bg-amber-100 text-stone-900"
+                        : "border-stone-300 text-stone-700 hover:bg-amber-50"
                     }`}
                   >
                     {opt.label}
@@ -247,10 +254,10 @@ export function DisplaySettingsPanel({
             </div>
           </section>
 
-          <hr className="border-slate-200" />
+          <hr className="border-stone-300" />
 
           <section className="py-4">
-            <h3 className="mb-3 text-sm font-semibold text-slate-900">Tipo de letra</h3>
+            <h3 className="mb-3 text-base font-bold text-stone-800">Tipo de letra</h3>
             <div className="grid gap-2" role="radiogroup" aria-label="Fonte">
               {FONTS.map((f) => {
                 const selected = settings.fontFamily === f.id;
@@ -261,27 +268,27 @@ export function DisplaySettingsPanel({
                     role="radio"
                     aria-checked={selected}
                     onClick={() => onUpdate({ fontFamily: f.id })}
-                    className={`settings-option rounded-xl border px-3 py-2.5 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 ${
+                    className={`settings-option min-h-12 rounded-xl border px-3 py-2.5 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9a3b52] ${
                       selected
-                        ? "selected border-sky-400 bg-sky-50"
-                        : "border-slate-200 bg-white hover:bg-slate-50"
+                        ? "selected border-amber-700 bg-amber-100"
+                        : "border-stone-300 bg-[#fffcf7] hover:bg-amber-50"
                     }`}
                   >
-                    <span className="block text-sm font-medium">{f.label}</span>
-                    <span className="mt-0.5 block text-xs text-slate-500">{f.hint}</span>
+                    <span className="block text-base font-bold">{f.label}</span>
+                    <span className="mt-0.5 block text-sm text-stone-600">{f.hint}</span>
                   </button>
                 );
               })}
             </div>
           </section>
 
-          <hr className="border-slate-200" />
+          <hr className="border-stone-300" />
 
           <section className="py-4">
-            <h3 className="mb-2 text-sm font-semibold text-slate-900">Preferências de exibição</h3>
+            <h3 className="mb-2 text-base font-bold text-stone-800">Preferências de exibição</h3>
             <Toggle
               label="Reduzir animações"
-              description="Desativa transitions e animations"
+              description="Também pausa o fundo animado"
               checked={settings.reduceMotion}
               onChange={(reduceMotion) => onUpdate({ reduceMotion })}
             />
@@ -292,26 +299,20 @@ export function DisplaySettingsPanel({
               onChange={(highlightLinks) => onUpdate({ highlightLinks })}
             />
             <Toggle
-              label="Espaçamento extra"
-              description="Aumenta o espaço entre seções"
-              checked={settings.extraSpacing}
-              onChange={(extraSpacing) => onUpdate({ extraSpacing })}
-            />
-            <Toggle
               label="Modo foco"
-              description="Esconde sumário e elementos secundários"
+              description="Esconde o sumário, o rodapé e o fundo decorativo"
               checked={settings.focusMode}
               onChange={(focusMode) => onUpdate({ focusMode })}
             />
           </section>
 
-          <hr className="border-slate-200" />
+          <hr className="border-stone-300" />
 
           <section className="py-4">
-            <h3 className="mb-3 text-sm font-semibold text-slate-900">Zoom</h3>
-            <label className="mb-2 flex items-center justify-between text-xs text-slate-600">
+            <h3 className="mb-3 text-base font-bold text-stone-800">Zoom</h3>
+            <label className="mb-2 flex items-center justify-between text-sm text-stone-600">
               <span>Escala da página</span>
-              <span className="font-medium text-slate-800">{settings.zoom}%</span>
+              <span className="font-bold text-stone-800">{settings.zoom}%</span>
             </label>
             <input
               type="range"
@@ -320,29 +321,29 @@ export function DisplaySettingsPanel({
               step={5}
               value={settings.zoom}
               onChange={(e) => onUpdate({ zoom: Number(e.target.value) })}
-              className="zoom-slider w-full"
+              className="zoom-slider min-h-12 w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9a3b52]"
               aria-label="Escala da página"
               aria-valuetext={`${settings.zoom} por cento`}
             />
             <button
               type="button"
               onClick={() => onUpdate({ zoom: 100 })}
-              className="mt-2 text-xs font-medium text-sky-800 underline underline-offset-2 hover:text-sky-950"
+              className="mt-2 min-h-12 rounded-lg px-2 text-sm font-semibold text-[#8f4528] underline underline-offset-2 hover:text-[#6f321c] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9a3b52]"
             >
               Restaurar padrão
             </button>
           </section>
         </div>
 
-        <div className="border-t border-slate-200 px-4 py-3">
+        <div className="border-t border-stone-300 px-4 py-3">
           <button
             type="button"
             onClick={onResetAll}
-            className="w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm font-medium text-slate-800 hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+            className="min-h-12 w-full rounded-xl border border-stone-300 bg-[#fffcf7] px-3 py-2.5 text-sm font-semibold text-stone-800 hover:bg-amber-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#9a3b52]"
           >
             Restaurar tudo
           </button>
-          <p className="mt-2 text-center text-[11px] leading-snug text-slate-500">
+          <p className="mt-2 text-center text-sm leading-snug text-stone-600">
             Suas preferências ficam salvas neste dispositivo
           </p>
         </div>

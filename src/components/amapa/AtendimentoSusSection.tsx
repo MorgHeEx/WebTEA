@@ -10,7 +10,7 @@ const SERVICES: Service[] = [
     title: "Centro de Atenção Psicossocial Infantil Juvenil (CAPSi de Macapá)",
     lines: [
       {
-        text: "Endereço: Rua Redenção, 432 – Jardim Marco Zero (Complexo Macapá Criança)",
+        text: "Endereço: Rua Redenção, 432, Jardim Marco Zero (Complexo Macapá Criança)",
         href:"https://maps.app.goo.gl/iEDNRPRwRMfZ3mqp7",
       },
       "Público: crianças e adolescentes de 6 a 17 anos de idade com transtorno mentais graves e persistentes, incluindo TEA",
@@ -18,10 +18,10 @@ const SERVICES: Service[] = [
     ],
   },
   {
-    title: "CAPS II Esperança - Centro de Atenção Psicossocial (Zona Norte - Macapá)",
+    title: "CAPS II Esperança - Centro de Atenção Psicossocial (Zona Norte, Macapá)",
     lines: [
       {
-        text: "Endereço: R. Rio Branco, 686 - Infraero, Macapá - AP, 68908-048",
+        text: "Endereço: R. Rio Branco, 686, Infraero, Macapá - AP, 68908-048",
         href:"https://maps.app.goo.gl/2Xpa3zFrVi1duob48",
       },
       "Público: pessoas maiores de 18 anos",
@@ -32,7 +32,7 @@ const SERVICES: Service[] = [
     title: "Centro de Atenção Psicossocial (CAPS III Casa Gentileza, Macapá)",
     lines: [
       {
-        text:"Endereço: Av. Marcílio Dias, 1395 – Jesus de Nazaré, Macapá",
+        text:"Endereço: Av. Marcílio Dias, 1395, Jesus de Nazaré, Macapá",
         href:"https://maps.app.goo.gl/C6R7Ccxg9or6bb1T7",
       },
       "Público: pessoas a partir de 18 anos de idade com transtornos mentais graves e persistentes. Especificamente os transtornos mentais maiores/psicóticos. Ex: esquizofrenia e transtorno afetivo bipolar",
@@ -40,10 +40,10 @@ const SERVICES: Service[] = [
     ],
   },
   {
-    title: "CAPS - Centro de Atenção Psico Social (Mazagão)",
+    title: "CAPS - Centro de Atenção Psicossocial (Mazagão)",
     lines: [
       {
-        text:"Endereço: Av. Pedro Aires Aleluia, 100 - Mazagão, AP, 68940-000",
+        text:"Endereço: Av. Pedro Aires Aleluia, 100, Mazagão - AP, 68940-000",
         href:"https://maps.app.goo.gl/7u4mjxJsCLAaCUZn8",
       },
       "Atendimento: de segunda a sexta-feira, das 8h às 18h",
@@ -53,7 +53,7 @@ const SERVICES: Service[] = [
     title: "Centro de Atenção Psicossocial Tipo 1 (CAPS I de Oiapoque)",
     lines: [
       {
-        text:"R. Djalma Limeira, 581 - Oiapoque, AP, 68980-000",
+        text:"R. Djalma Limeira, 581, Oiapoque - AP, 68980-000",
         href:"https://maps.app.goo.gl/gwD4cjnBsfHULtmc7",
       },
       "Público-alvo: pessoas a partir de 12 anos de idade que apresentam prioritariamente intenso sofrimento psíquico decorrente de transtornos mentais graves e persistentes, incluindo aqueles relacionados ao uso de substâncias psicoativas, e outras situações clínicas que impossibilitem estabelecer laços sociais e realizar projetos de vida",
@@ -63,7 +63,7 @@ const SERVICES: Service[] = [
   {
     title: "Centro de Atenção Psicossocial Tipo 1 (CAPS 1 de Laranjal do Jari)",
     lines: [
-      "Endereço: Rua Vitória Régia, 2500, Laranjal do Jari-AP",
+      "Endereço: Rua Vitória Régia, 2500, Laranjal do Jari - AP",
       "Público-alvo: pessoas a partir de 18 anos de idade que apresentam prioritariamente intenso sofrimento psíquico decorrente de transtornos mentais graves e persistentes, incluindo aqueles relacionados ao uso de substâncias psicoativas, e outras situações clínicas que impossibilitem estabelecer laços sociais e realizar projetos de vida",
       "Atendimento: de segunda a sexta-feira em dois turnos (manhã e tarde), atende demandas espontâneas e encaminhadas de outros serviços",
     ],
@@ -72,7 +72,7 @@ const SERVICES: Service[] = [
     title: "Centro de Atenção Psicossocial Infantojuvenil (CAPS IJ / Espaço JAPIIM de Santana)",
     lines: [
       {
-        text: "R. Pres. Arthur Costa e Silva, 1434 - Remédios, Santana - AP, 68925-099",
+        text: "R. Pres. Arthur Costa e Silva, 1434, Remédios, Santana - AP, 68925-099",
         href: "https://maps.app.goo.gl/Zy2fJLdW75a3bqRu6",
       },
       "Público-alvo: crianças e adolescentes de 6 a 17 anos de idade com transtornos mentais graves e persistentes e com necessidades decorrentes do uso de álcool e outras drogas",
@@ -80,10 +80,10 @@ const SERVICES: Service[] = [
     ],
   },
   {
-    title: "Centro de Atenção Psicossocial Tipo 1 (CAPS I Renovar - Porto Grande)",
+    title: "Centro de Atenção Psicossocial Tipo 1 (CAPS I Renovar, Porto Grande)",
     lines: [
       {
-        text: "Endereço: Av. Soldado Valdinei Pereira, s/n, bairro Nova Esperança, Porto Grande-AP, 68997-000 (Entre Centro Especializado de Reabilitação e UBS Nova Esperança)",
+        text: "Endereço: Av. Soldado Valdinei Pereira, s/n, bairro Nova Esperança, Porto Grande - AP, 68997-000 (Entre o Centro Especializado de Reabilitação e a UBS Nova Esperança)",
         href: "https://maps.app.goo.gl/eKJERmCxjesVAbbQ6",
       },
       "Público-alvo: pessoas a partir de 18 anos de idade que apresentam prioritariamente intenso sofrimento psíquico decorrente de transtornos mentais graves e persistentes, incluindo aqueles relacionados ao uso de substâncias psicoativas, e outras situações clínicas que impossibilitem estabelecer laços sociais e realizar projetos de vida",

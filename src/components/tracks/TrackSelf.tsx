@@ -1,6 +1,5 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTrackProgress } from "../../hooks/useTrackProgress";
-import { useSectionInView } from "../../hooks/useSectionInView";
 import { levelBadgeLabel, loadTrackAProfile } from "../../lib/trackAProfileStorage";
 import { AtendimentoSusSection } from "../amapa/AtendimentoSusSection";
 import { AmapaDireitosSection } from "../amapa/AmapaDireitosSection";
@@ -17,7 +16,6 @@ import { TrackProgressHeader } from "../ui/TrackProgressHeader";
 import { TrackToc, type TocItem } from "../ui/TrackToc";
 import {
   HubIcons,
-  makeAnchorCard,
   TrackExploreHub,
 } from "./TrackExploreHub";
 import { TrackSelfGate } from "./TrackSelfGate";
@@ -26,9 +24,21 @@ type TrackSelfProps = {
   onBack: () => void;
   onSwitchTrack: () => void;
   onContact: () => void;
+  directAccess?: boolean;
+  initialChapterId?: string;
+  onChapterChange: (chapterId: string) => void;
 };
 
 const CHECKLIST_ID = "self-s2";
+const SELF_CHAPTERS = [
+  { id: "self-s1", label: "Validação emocional", title: "Validação emocional" },
+  { id: "self-s2", label: "Primeiros passos práticos", title: "Primeiros passos práticos" },
+  { id: "self-atendimento", label: "Onde buscar atendimento", title: "Onde buscar atendimento pelo SUS no Amapá" },
+  { id: "self-sus", label: "Serviços do SUS", title: "Serviços gratuitos garantidos pelo SUS" },
+  { id: "self-terapia", label: "Direito à terapia", title: "Direito à terapia" },
+  { id: "self-direitos", label: "Seus direitos no Amapá", title: "Seus direitos no Amapá" },
+  { id: "self-carteira", label: "Emitir Carteira TEA", title: "Emitir Carteira TEA" },
+];
 
 const selfSteps: InteractiveChecklistItem[] = [
   {
@@ -37,7 +47,7 @@ const selfSteps: InteractiveChecklistItem[] = [
   },
   {
     title: "Evite decisões grandes nas primeiras semanas.",
-    hint: "Emprego, término, mudança brusca de curso ou escola podem esperar um pouco - seu sistema nervoso está processando muita coisa.",
+    hint: "Emprego, término, mudança brusca de curso ou escola podem esperar um pouco. Sua mente está processando muita coisa.",
   },
   {
     title: "Primeiro profissional: neuropsicólogo ou psiquiatra com experiência em TEA em adultos.",
@@ -45,7 +55,7 @@ const selfSteps: InteractiveChecklistItem[] = [
   },
   {
     title: "Segundo profissional (opcional, mas recomendado): psicólogo com ACT ou DBT.",
-    hint: "Essas abordagens costumam ajudar com emoções intensas, culpa e planejamento de vida - sem prometer “conserto rápido”.",
+    hint: "Essas abordagens podem ajudar com emoções intensas, culpa e planejamento de vida. Elas não prometem um “conserto rápido”.",
   },
   {
     title: "Terceiro (se fizer sentido): terapeuta ocupacional para mapeamento sensorial.",
@@ -53,7 +63,7 @@ const selfSteps: InteractiveChecklistItem[] = [
   },
   {
     title: "Entre em comunidades antes de “só” ir a consultórios.",
-    hint: "O pertencimento regula ansiedade. Busque comunidades online de autistas - grupos focados em diagnóstico tardio e neurodivergência.",
+    hint: "O pertencimento pode ajudar a aliviar a ansiedade. Busque comunidades online de autistas, especialmente grupos sobre diagnóstico tardio e neurodivergência.",
     bullets: [
       "Prefira espaços moderados e com regras claras de respeito.",
       "Se algo aumentar culpa ou comparação dolorosa, é permissível sair.",
@@ -61,8 +71,17 @@ const selfSteps: InteractiveChecklistItem[] = [
   },
 ];
 
-export function TrackSelf({ onBack, onSwitchTrack, onContact }: TrackSelfProps) {
-  const [mainUnlocked, setMainUnlocked] = useState(() => loadTrackAProfile().gateCompleted);
+export function TrackSelf({
+  onBack,
+  onSwitchTrack,
+  onContact,
+  directAccess = false,
+  initialChapterId,
+  onChapterChange,
+}: TrackSelfProps) {
+  const [mainUnlocked, setMainUnlocked] = useState(
+    () => directAccess || loadTrackAProfile().gateCompleted,
+  );
   const [levelBadge, setLevelBadge] = useState<string | null>(() => {
     const p = loadTrackAProfile();
     return p.gateCompleted && p.level ? levelBadgeLabel(p.level) : null;
@@ -72,7 +91,12 @@ export function TrackSelf({ onBack, onSwitchTrack, onContact }: TrackSelfProps) 
     const p = loadTrackAProfile();
     setMainUnlocked(true);
     setLevelBadge(p.level ? levelBadgeLabel(p.level) : null);
-  }, []);
+    onChapterChange(SELF_CHAPTERS[0].id);
+  }, [onChapterChange]);
+
+  useEffect(() => {
+    if (directAccess) setMainUnlocked(true);
+  }, [directAccess]);
 
   if (!mainUnlocked) {
     return <TrackSelfGate onComplete={handleGateDone} />;
@@ -84,6 +108,8 @@ export function TrackSelf({ onBack, onSwitchTrack, onContact }: TrackSelfProps) 
       onSwitchTrack={onSwitchTrack}
       onContact={onContact}
       levelBadge={levelBadge}
+      initialChapterId={initialChapterId}
+      onChapterChange={onChapterChange}
     />
   );
 }
@@ -93,6 +119,8 @@ type TrackSelfMainProps = {
   onSwitchTrack: () => void;
   onContact: () => void;
   levelBadge: string | null;
+  initialChapterId?: string;
+  onChapterChange: (chapterId: string) => void;
 };
 
 function TrackSelfMain({
@@ -100,6 +128,8 @@ function TrackSelfMain({
   onSwitchTrack,
   onContact,
   levelBadge,
+  initialChapterId,
+  onChapterChange,
 }: TrackSelfMainProps) {
   const {
     markSectionViewed,
@@ -110,53 +140,79 @@ function TrackSelfMain({
     getChecklist,
   } = useTrackProgress("self");
 
-  const refS1 = useSectionInView(() => markSectionViewed("self-s1"), true);
-  const refS2 = useSectionInView(() => markSectionViewed("self-s2"), true);
-  const refAt = useSectionInView(() => markSectionViewed("self-atendimento"), true);
-  const refSus = useSectionInView(() => markSectionViewed("self-sus"), true);
-  const refTer = useSectionInView(() => markSectionViewed("self-terapia"), true);
-  const refDir = useSectionInView(() => markSectionViewed("self-direitos"), true);
-  const refCar = useSectionInView(() => markSectionViewed("self-carteira"), true);
-
+  const [currentChapterId, setCurrentChapterId] = useState(
+    () =>
+      initialChapterId === "self-explore" ||
+      SELF_CHAPTERS.some((chapter) => chapter.id === initialChapterId)
+        ? initialChapterId!
+        : SELF_CHAPTERS[0].id,
+  );
+  useEffect(() => {
+    if (
+      initialChapterId === "self-explore" ||
+      SELF_CHAPTERS.some((chapter) => chapter.id === initialChapterId)
+    ) {
+      setCurrentChapterId(initialChapterId!);
+    } else if (initialChapterId === undefined) {
+      setCurrentChapterId(SELF_CHAPTERS[0].id);
+    }
+  }, [initialChapterId]);
   const checklist = getChecklist(CHECKLIST_ID);
-  const allRead = viewedCount >= totalSections && totalSections > 0;
+  const currentChapterIndex = SELF_CHAPTERS.findIndex(
+    (chapter) => chapter.id === currentChapterId,
+  );
+  const showingExplore = currentChapterId === "self-explore";
+  const chapterNumber = showingExplore ? SELF_CHAPTERS.length : currentChapterIndex + 1;
 
   const tocItems: TocItem[] = useMemo(() => {
-    const items: TocItem[] = [
-      { id: "self-s1", label: "Validação emocional" },
-      { id: "self-s2", label: "Primeiros passos práticos" },
-      { id: "self-atendimento", label: "Onde buscar atendimento" },
-      { id: "self-terapia", label: "Direito à terapia" },
-      { id: "self-direitos", label: "Seus direitos no Amapá" },
-      { id: "self-carteira", label: "Emitir Carteira TEA" },
+    return [
+      ...SELF_CHAPTERS.map((chapter) => ({
+        ...chapter,
+        completed: isSectionViewed(chapter.id),
+        current: chapter.id === currentChapterId,
+      })),
+      {
+        id: "self-explore",
+        label: "Explorar conteúdos",
+        completed: false,
+        current: showingExplore,
+      },
     ];
-    if (allRead) items.push({ id: "self-explore", label: "O que mais explorar" });
-    return items;
-  }, [allRead]);
+  }, [currentChapterId, isSectionViewed, showingExplore]);
+
+  const goToChapter = useCallback(
+    (id: string, markCurrent = false) => {
+      if (markCurrent && !showingExplore) markSectionViewed(currentChapterId);
+      setCurrentChapterId(id);
+      onChapterChange(id);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    },
+    [currentChapterId, markSectionViewed, onChapterChange, showingExplore],
+  );
 
   const hubCards = useMemo(
     () => [
-      makeAnchorCard(
-        "hub-at",
-        "Onde buscar atendimento",
-        "CAPSi, CER, CAPS III e TEAtendemos no Amapá",
-        HubIcons.map,
-        "self-atendimento",
-      ),
-      makeAnchorCard(
-        "hub-dir",
-        "Seus direitos",
-        "Direitos federais e estaduais que podem te proteger",
-        HubIcons.rights,
-        "self-direitos",
-      ),
-      makeAnchorCard(
-        "hub-car",
-        "Emitir Carteira TEA",
-        "Passo a passo no Super Fácil",
-        HubIcons.card,
-        "self-carteira",
-      ),
+      {
+        id: "hub-at",
+        title: "Onde buscar atendimento",
+        description: "CAPSi, CER, CAPS III e TEAtendemos no Amapá",
+        icon: HubIcons.map,
+        onClick: () => goToChapter("self-atendimento"),
+      },
+      {
+        id: "hub-dir",
+        title: "Seus direitos no Amapá",
+        description: "Direitos federais e estaduais que podem te proteger",
+        icon: HubIcons.rights,
+        onClick: () => goToChapter("self-direitos"),
+      },
+      {
+        id: "hub-car",
+        title: "Emitir Carteira TEA",
+        description: "Passo a passo nas unidades do Super Fácil",
+        icon: HubIcons.card,
+        onClick: () => goToChapter("self-carteira"),
+      },
       {
         id: "hub-swap",
         title: "Ver a outra trilha",
@@ -171,40 +227,50 @@ function TrackSelfMain({
         icon: HubIcons.mail,
         onClick: onContact,
       },
-      makeAnchorCard(
-        "hub-sus",
-        "Serviços do SUS",
-        "O que é gratuito na rede pública",
-        HubIcons.sus,
-        "self-sus",
-      ),
+      {
+        id: "hub-sus",
+        title: "Serviços do SUS",
+        description: "O que está disponível na rede pública",
+        icon: HubIcons.sus,
+        onClick: () => goToChapter("self-sus"),
+      },
     ],
-    [onContact, onSwitchTrack],
+    [goToChapter, onContact, onSwitchTrack],
   );
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+    <div className="mx-auto max-w-[calc(65ch+21rem)] px-4 py-10 sm:px-6">
       <TrackProgressHeader
         eyebrow="Trilha: para você"
-        title="Depois do diagnóstico"
+        title={
+          showingExplore
+            ? "Explore os conteúdos"
+            : SELF_CHAPTERS[currentChapterIndex]?.title ?? "Depois do diagnóstico"
+        }
         viewedCount={viewedCount}
         totalSections={totalSections}
         onBack={onBack}
         variant="self"
         levelBadge={levelBadge}
+        chapterNumber={chapterNumber}
+        chapterCount={SELF_CHAPTERS.length}
       />
 
-      <div className="flex items-start gap-8">
-        <div className="track-main min-w-0 flex-1 space-y-8">
+      <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-[minmax(0,65ch)_16rem] lg:justify-center lg:gap-8">
+        <div className="track-main min-w-0 w-full">
+          {showingExplore ? (
+            <TrackExploreHub variant="self" cards={hubCards} />
+          ) : null}
+          {currentChapterId === "self-s1" && (
           <ContentSection
-            ref={refS1}
             id="self-s1"
             index={1}
             title="Validação emocional"
-            isViewed={isSectionViewed("self-s1")}
+            isViewed={false}
+            collapsible={false}
           >
             <p className="max-w-prose">
-              É normal sentir confusão ou alívio - ou outras emoções misturadas. Não existe reação
+              É normal sentir confusão, alívio ou outras emoções misturadas. Não existe uma reação
               &quot;certa&quot;.
             </p>
             <p className="max-w-prose">
@@ -237,89 +303,133 @@ function TrackSelfMain({
               </PhaseCard>
             </div>
           </ContentSection>
+          )}
 
+          {currentChapterId === "self-s2" && (
           <ContentSection
-            ref={refS2}
             id="self-s2"
             index={2}
             title="Primeiros passos práticos"
-            isViewed={isSectionViewed("self-s2")}
+            isViewed={false}
+            collapsible={false}
           >
             <InteractiveChecklist
-              intro="Um caminho possível, sem pressa de fazer tudo junto. Marque o que já fez - seu progresso fica salvo neste aparelho."
+              intro="Esta lista reúne sugestões, não tarefas obrigatórias. Você não precisa fazer tudo nem seguir uma ordem. Escolha apenas o que fizer sentido para você agora, pule qualquer item sem culpa e volte quando quiser. Marcar um item é opcional e serve somente para acompanhar seu próprio caminho."
               items={selfSteps}
               checked={checklist}
               accent="sky"
               onToggle={(i, v) => setChecklistItem(CHECKLIST_ID, i, v)}
             />
           </ContentSection>
+          )}
 
+          {currentChapterId === "self-atendimento" && (
           <ContentSection
-            ref={refAt}
             id="self-atendimento"
             index={3}
             title="Onde buscar atendimento pelo SUS no Amapá"
-            isViewed={isSectionViewed("self-atendimento")}
+            isViewed={false}
+            collapsible={false}
           >
             <AtendimentoSusSection tone="sky" />
           </ContentSection>
+          )}
 
+          {currentChapterId === "self-sus" && (
           <ContentSection
-            ref={refSus}
             id="self-sus"
             index={4}
             title="Serviços gratuitos garantidos pelo SUS"
-            isViewed={isSectionViewed("self-sus")}
+            isViewed={false}
+            collapsible={false}
           >
             <ServicosSusSection />
           </ContentSection>
+          )}
 
+          {currentChapterId === "self-terapia" && (
           <ContentSection
-            ref={refTer}
             id="self-terapia"
             index={5}
             title="Direito à terapia"
-            isViewed={isSectionViewed("self-terapia")}
+            isViewed={false}
+            collapsible={false}
           >
             <DireitoTerapiaSection />
           </ContentSection>
+          )}
 
+          {currentChapterId === "self-direitos" && (
           <ContentSection
-            ref={refDir}
             id="self-direitos"
             index={6}
             title="Seus direitos no Amapá"
-            isViewed={isSectionViewed("self-direitos")}
+            isViewed={false}
+            collapsible={false}
           >
             <AmapaDireitosSection />
           </ContentSection>
+          )}
 
+          {currentChapterId === "self-carteira" && (
           <ContentSection
-            ref={refCar}
             id="self-carteira"
             index={7}
             title="Emitir Carteira TEA"
-            isViewed={isSectionViewed("self-carteira")}
+            isViewed={false}
+            collapsible={false}
           >
             <CarteiraTeaAmapaSection
               getChecklist={getChecklist}
               setChecklistItem={setChecklistItem}
             />
           </ContentSection>
+          )}
 
-          {allRead ? (
-            <ContentSection
-              id="self-explore"
-              index={8}
-              title="O que mais você pode explorar"
-              collapsible={false}
+          {!showingExplore ? (
+            <nav className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-amber-200/80 pt-5">
+              <button
+                type="button"
+                disabled={currentChapterIndex === 0}
+                onClick={() =>
+                  goToChapter(SELF_CHAPTERS[currentChapterIndex - 1]?.id ?? SELF_CHAPTERS[0].id)
+                }
+                className="min-h-12 rounded-xl border border-stone-300 bg-white/80 px-5 py-3 font-semibold text-stone-700 hover:bg-stone-50 disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-700"
+              >
+                Anterior
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  if (currentChapterIndex === SELF_CHAPTERS.length - 1) {
+                    goToChapter("self-explore", true);
+                  } else {
+                    goToChapter(SELF_CHAPTERS[currentChapterIndex + 1].id, true);
+                  }
+                }}
+                className="chapter-next min-h-12 rounded-xl bg-[#b4532a] px-5 py-3 font-bold text-white shadow-sm hover:bg-[#923f21] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-900"
+              >
+                {currentChapterIndex === SELF_CHAPTERS.length - 1
+                  ? "Próximo: Lobby de exploração"
+                  : `Próximo: ${SELF_CHAPTERS[currentChapterIndex + 1].title}`}
+              </button>
+            </nav>
+          ) : (
+            <button
+              type="button"
+              onClick={() => goToChapter(SELF_CHAPTERS[0].id)}
+              className="mt-8 min-h-12 rounded-xl border border-stone-300 px-5 py-3 font-semibold text-stone-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-700"
             >
-              <TrackExploreHub variant="self" cards={hubCards} />
-            </ContentSection>
-          ) : null}
+              Voltar ao Capítulo 1
+            </button>
+          )}
         </div>
 
-        <TrackToc items={tocItems} variant="self" />
+        <TrackToc
+          items={tocItems}
+          variant="self"
+          onSelect={(id) => goToChapter(id, false)}
+        />
       </div>
     </div>
   );
