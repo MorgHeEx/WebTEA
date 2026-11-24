@@ -95,7 +95,7 @@ export function TrackSelfGate({ onComplete }: TrackSelfGateProps) {
             </button>
 
             <div
-              className="rounded-2xl border-2 border-dashed border-stone-300 bg-stone-50/80 p-4"
+              className="b-gate-disabled-card rounded-2xl border-2 border-dashed border-stone-300 bg-stone-50/80 p-4"
               aria-describedby="lvl3-hint"
             >
               <button

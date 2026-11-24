@@ -118,7 +118,7 @@ export function TrackLovedOneGate({ onComplete }: TrackLovedOneGateProps) {
             </button>
 
             <div
-              className="rounded-2xl border-2 border-dashed border-stone-300 bg-stone-50/80 p-4"
+              className="b-gate-disabled-card rounded-2xl border-2 border-dashed border-stone-300 bg-stone-50/80 p-4"
               aria-describedby="b-lvl3-hint"
             >
               <button
@@ -174,7 +174,7 @@ export function TrackLovedOneGate({ onComplete }: TrackLovedOneGateProps) {
             <h2 id="b-gate-treat-heading" className="text-xl font-bold text-stone-800">
               Orientações para quem é responsável
             </h2>
-            <label className="mt-4 flex min-h-12 cursor-pointer items-start gap-3 rounded-xl border border-stone-200 bg-stone-50/60 px-3 py-3">
+            <label className="b-gate-checkbox mt-4 flex min-h-12 cursor-pointer items-start gap-3 rounded-xl border border-stone-200 bg-stone-50/60 px-3 py-3">
               <input
                 type="checkbox"
                 className="mt-1 h-5 w-5 shrink-0 rounded border-stone-300 text-rose-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8d3348] focus:ring-rose-600"

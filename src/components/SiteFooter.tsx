@@ -21,7 +21,7 @@ export function SiteFooter({ onContact, onReferences }: SiteFooterProps) {
         >
           Fontes
         </button>
-        <span className="pointer-events-none text-xs leading-none text-stone-500">v1.0.0</span>
+        <span className="pointer-events-none text-xs leading-none text-stone-500">v1.1.0</span>
       </div>
     </footer>
   );
