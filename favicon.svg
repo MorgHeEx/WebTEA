@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-labelledby="webtea-title webtea-desc">
+  <title id="webtea-title">Ícone WebTEA</title>
+  <desc id="webtea-desc">Ícone vetorial do site webtea.com.br combinando um globo digital conectado com o símbolo do infinito da neurodiversidade.</desc>
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090D16" />
+      <stop offset="55%" stop-color="#172554" />
+      <stop offset="100%" stop-color="#0F766E" />
+    </linearGradient>
+    <linearGradient id="globe-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#22D3EE" stop-opacity="0.65" />
+      <stop offset="100%" stop-color="#34D399" stop-opacity="0.85" />
+    </linearGradient>
+    <linearGradient id="infinity-gradient" x1="15%" y1="50%" x2="85%" y2="50%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="35%" stop-color="#34D399" />
+      <stop offset="70%" stop-color="#FBBF24" />
+      <stop offset="100%" stop-color="#FB7185" />
+    </linearGradient>
+    <filter id="emblem-shadow" filterUnits="userSpaceOnUse" x="0" y="0" width="512" height="512">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#020617" flood-opacity="0.55" />
+    </filter>
+    <filter id="node-glow" filterUnits="userSpaceOnUse" x="0" y="0" width="512" height="512">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="512" height="512" rx="116" fill="url(#bg-gradient)" />
+  <rect x="6" y="6" width="500" height="500" rx="110" fill="none" stroke="#FFFFFF" stroke-opacity="0.14" stroke-width="4" />
+  <g fill="none" stroke="url(#globe-gradient)" stroke-linecap="round">
+    <circle cx="256" cy="256" r="196" stroke-width="6" />
+    <ellipse cx="256" cy="256" rx="126" ry="196" stroke-width="4.5" stroke-opacity="0.7" />
+    <ellipse cx="256" cy="256" rx="58" ry="196" stroke-width="4" stroke-opacity="0.55" />
+    <path d="M 88 156 Q 256 192 424 156" stroke-width="4.5" stroke-opacity="0.7" />
+    <path d="M 60 256 Q 256 278 452 256" stroke-width="4" stroke-opacity="0.45" />
+    <path d="M 88 356 Q 256 320 424 356" stroke-width="4.5" stroke-opacity="0.7" />
+    <line x1="158" y1="92" x2="88" y2="156" stroke-width="4" stroke-opacity="0.65" />
+    <line x1="354" y1="92" x2="424" y2="156" stroke-width="4" stroke-opacity="0.65" />
+    <line x1="158" y1="420" x2="88" y2="356" stroke-width="4" stroke-opacity="0.65" />
+    <line x1="354" y1="420" x2="424" y2="356" stroke-width="4" stroke-opacity="0.65" />
+  </g>
+  <g filter="url(#node-glow)">
+    <circle cx="256" cy="60" r="10" fill="#0F172A" stroke="#38BDF8" stroke-width="4.5" />
+    <circle cx="256" cy="452" r="10" fill="#0F172A" stroke="#34D399" stroke-width="4.5" />
+    <circle cx="158" cy="92" r="12" fill="#0F172A" stroke="#38BDF8" stroke-width="5" />
+    <circle cx="354" cy="92" r="12" fill="#0F172A" stroke="#38BDF8" stroke-width="5" />
+    <circle cx="158" cy="420" r="12" fill="#0F172A" stroke="#34D399" stroke-width="5" />
+    <circle cx="354" cy="420" r="12" fill="#0F172A" stroke="#34D399" stroke-width="5" />
+  </g>
+  <g filter="url(#emblem-shadow)">
+    <path
+      d="M 256 256
+         C 204 172, 98 172, 98 256
+         C 98 340, 204 340, 256 256
+         C 308 172, 414 172, 414 256
+         C 414 340, 308 340, 256 256 Z"
+      fill="none"
+      stroke="#090D16"
+      stroke-width="54"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M 256 256
+         C 204 172, 98 172, 98 256
+         C 98 340, 204 340, 256 256
+         C 308 172, 414 172, 414 256
+         C 414 340, 308 340, 256 256 Z"
+      fill="none"
+      stroke="url(#infinity-gradient)"
+      stroke-width="38"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </g>
+</svg>
